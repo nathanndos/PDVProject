@@ -1,7 +1,7 @@
 ﻿
 namespace PDVProject
 {
-    partial class Form1
+    partial class ClienteForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -40,7 +40,7 @@ namespace PDVProject
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(73, 58);
+            this.label1.Location = new System.Drawing.Point(110, 80);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 15);
             this.label1.TabIndex = 0;
@@ -50,7 +50,7 @@ namespace PDVProject
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(73, 94);
+            this.label2.Location = new System.Drawing.Point(110, 141);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 15);
             this.label2.TabIndex = 1;
@@ -58,21 +58,21 @@ namespace PDVProject
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(162, 58);
+            this.txtNome.Location = new System.Drawing.Point(176, 77);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(100, 23);
+            this.txtNome.Size = new System.Drawing.Size(161, 23);
             this.txtNome.TabIndex = 2;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(162, 94);
+            this.txtEmail.Location = new System.Drawing.Point(176, 138);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(100, 23);
+            this.txtEmail.Size = new System.Drawing.Size(161, 23);
             this.txtEmail.TabIndex = 3;
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(100, 147);
+            this.btnCadastrar.Location = new System.Drawing.Point(176, 205);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(129, 23);
             this.btnCadastrar.TabIndex = 4;
@@ -84,25 +84,26 @@ namespace PDVProject
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(84, 19);
+            this.label3.Location = new System.Drawing.Point(133, 24);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(160, 21);
             this.label3.TabIndex = 5;
             this.label3.Text = "Cadastro novo cliente";
             // 
-            // Form1
+            // CadastroForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(342, 244);
+            this.ClientSize = new System.Drawing.Size(452, 300);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCadastrar);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
+            this.Name = "CadastroForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PDVProject";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);

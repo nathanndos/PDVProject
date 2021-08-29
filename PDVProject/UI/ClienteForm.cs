@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace PDVProject
 {
-    public partial class Form1 : Form
+    public partial class ClienteForm : Form
     {
-        public Form1()
+        public ClienteForm()
         {
             InitializeComponent();
         }
@@ -45,6 +45,8 @@ namespace PDVProject
             {
                 ClienteBLL.save(cliente1);
                 MessageBox.Show("Cadastrado com sucesso!");
+                txtNome.Text = "";
+                txtEmail.Text = "";
 
             }
             catch(Exception)
