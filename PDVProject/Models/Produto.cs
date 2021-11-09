@@ -9,7 +9,7 @@ namespace Entity
     class Produto
     {
         public static int IdProdutos { get; private set; }
-        public int _idProduto { get; }
+        public int Id { get; }
         public string Nome { get; set; }
         public float Preco { get; set; }
         public int CodigoFornecedor { get; set; }
@@ -17,7 +17,7 @@ namespace Entity
         public Produto()
         {
             IdProdutos++;
-            _idProduto = IdProdutos;
+            Id = IdProdutos;
         }
     }
 }

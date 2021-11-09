@@ -33,5 +33,30 @@ namespace PDVProject.UI
             ProdutoForm produtoForm = new ProdutoForm();
             produtoForm.Show();
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            lb_caixa.Text = "CAIXA ABERTO";
+            button2.Text = "Iniciar Venda";
+            btn_finalizar.Text = "Fechar Caixa";
+        }
+
+        private void btn_finalizar_Click(object sender, EventArgs e)
+        {
+            lb_caixa.Text = "CAIXA FECHADO";
+            button2.Text = "Iniciar Caixa";
+            btn_finalizar.Text = "Finalizar";
+        }
+
+        private void btn_func_Click(object sender, EventArgs e)
+        {
+            FuncionarioForm funcionarioForm = new FuncionarioForm();    
+            funcionarioForm.Show();
+        }
     }
 }

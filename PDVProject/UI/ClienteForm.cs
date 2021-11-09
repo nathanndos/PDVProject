@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using PDVProject.UI;
 namespace PDVProject
 {
     public partial class ClienteForm : Form
@@ -36,23 +36,25 @@ namespace PDVProject
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            ClienteBLL.getLast();
+            CadastroCliente cadastrocliente = new CadastroCliente();
+            cadastrocliente.Show();
+            /*ClienteBLL.getLast();
             Cliente cliente1 = new Cliente();
-            cliente1.Nome = txtNome.Text;
-            cliente1.Email = txtEmail.Text;
+            //cliente1.Nome = txtNome.Text;
+            //cliente1.Email = txtEmail.Text;
 
             try
             {
                 ClienteBLL.save(cliente1);
                 MessageBox.Show("Cadastrado com sucesso!");
-                txtNome.Text = "";
-                txtEmail.Text = "";
+                //txtNome.Text = "";
+                //txtEmail.Text = "";
 
             }
             catch(Exception)
             {
                 MessageBox.Show("Erro");
-            }
+            }*/
         }
     }
 }
