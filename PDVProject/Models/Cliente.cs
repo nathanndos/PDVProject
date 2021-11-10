@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entity
 {
-    public class Cliente//Entidade Cliente
+    public class Cliente:ClasseBase//Entidade Cliente
     {
-        public int Id { get; private set; }
         public static int Id_Clientes { private get; set; }
-        public string Nome { get; set; }
         public string Email { get; set; }
         public string SobreNome{get; set;}
         public string Cpf {get; set;}
@@ -19,6 +17,7 @@ namespace Entity
         {
             Id_Clientes++;
             Id = Id_Clientes;
+            Ide = new string(ChaveAleatoria());
         }
     }
 }

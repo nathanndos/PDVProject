@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace PDVProject.UI
 {
-    public partial class CadastroFuncionario : Form
+    public partial class CadastroProduto : Form
     {
-        public CadastroFuncionario()
+        public CadastroProduto()
         {
             InitializeComponent();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void button1_Click(object sender, EventArgs e)

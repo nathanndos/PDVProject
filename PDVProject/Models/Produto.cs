@@ -6,18 +6,20 @@ using System.Threading.Tasks;
 
 namespace Entity
 {
-    class Produto
+    public class Produto: ClasseBase
+
     {
         public static int IdProdutos { get; private set; }
-        public int Id { get; }
-        public string Nome { get; set; }
         public float Preco { get; set; }
+        public int Ncm { get; set; }    
         public int CodigoFornecedor { get; set; }
 
         public Produto()
         {
             IdProdutos++;
             Id = IdProdutos;
+            Ide = new string(ChaveAleatoria());
         }
+
     }
 }

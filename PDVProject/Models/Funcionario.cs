@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entity
 {
-    public class Funcionario
+    public class Funcionario:ClasseBase
     {
         public static int IdFuncionarios { private get;  set; }  
-        public int Id { get; private set; }    
-        public string Name { get; set; } 
         public float Comissao { get;set; }  
         public string Funcao { get; set; }  
 
@@ -18,6 +16,7 @@ namespace Entity
         {
             IdFuncionarios++;
             Id = IdFuncionarios;
+            Ide = new string(ChaveAleatoria());
         }
     }
 }
