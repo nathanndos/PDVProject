@@ -11,7 +11,7 @@ namespace BLL
     class ClienteBLL//modelo de negocio - chamada de ações
     {
        public static void save(Cliente cliente)
-        {
+        { 
             if (ClienteDAL.findClient(cliente.Id))
             {
                 ClienteDAL.createClient(cliente);
