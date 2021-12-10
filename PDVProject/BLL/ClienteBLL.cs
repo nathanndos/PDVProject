@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Entity;
 using DAL;
+using System.Data;
+
 
 namespace BLL
 {
@@ -12,7 +14,7 @@ namespace BLL
     {
        public static void save(Cliente cliente)
         { 
-            if (ClienteDAL.findClient(cliente.Id))
+            if (ClienteDAL.findClient(cliente.Codigo))
             {
                 ClienteDAL.createClient(cliente);
             }
@@ -22,7 +24,24 @@ namespace BLL
             }
         }public static void getLast()
         {
-           Cliente.Id_Clientes = ClienteDAL.getLastId();
+           Cliente.Id = ClienteDAL.getLastId();
         }
+        public static DataTable getDataTable()
+        {
+            return ClienteDAL.getData();
+        }
+        public static DataTable consultaNome(string name, bool tipoNome)
+        {
+            if (tipoNome == true)
+            {
+                return ClienteDAL.consultClient(name);
+            }
+            return ClienteDAL.consultCodigo(int.Parse(name));
+        }
+       /* public static ClienteDAL get(int codigo)
+        {
+            return ClienteDAL.consultCodigo(codigo);
+        }*/
     }
 }
+

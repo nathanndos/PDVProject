@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Entity;
 
 namespace PDVProject.UI { 
     public partial class CadastroCliente : Form
@@ -18,7 +19,8 @@ namespace PDVProject.UI {
 
     private void button1_Click(object sender, EventArgs e)
     {
-
+            Cliente cliente = new Cliente();
+            MessageBox.Show(""+ cliente.Ide);
     }
 }
 }

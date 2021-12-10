@@ -7,17 +7,15 @@ using System.Threading.Tasks;
 namespace Entity
 {
     public class Produto: ClasseBase
-
     {
-        public static int IdProdutos { get; private set; }
+        public static int Id { get; private set; }
         public float Preco { get; set; }
         public int Ncm { get; set; }    
         public int CodigoFornecedor { get; set; }
-
         public Produto()
         {
-            IdProdutos++;
-            Id = IdProdutos;
+            Id++;
+            Codigo = Id;
             Ide = new string(ChaveAleatoria());
         }
 

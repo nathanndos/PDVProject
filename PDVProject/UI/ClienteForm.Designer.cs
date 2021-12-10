@@ -33,6 +33,8 @@ namespace PDVProject
             this.label3 = new System.Windows.Forms.Label();
             this.btn_editar = new System.Windows.Forms.Button();
             this.btn_excluir = new System.Windows.Forms.Button();
+            this.dgvCliente = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCliente)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCadastrar
@@ -73,12 +75,23 @@ namespace PDVProject
             this.btn_excluir.Text = "Excluir";
             this.btn_excluir.UseVisualStyleBackColor = true;
             // 
+            // dgvCliente
+            // 
+            this.dgvCliente.AllowUserToDeleteRows = false;
+            this.dgvCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCliente.Location = new System.Drawing.Point(57, 182);
+            this.dgvCliente.Name = "dgvCliente";
+            this.dgvCliente.RowTemplate.Height = 25;
+            this.dgvCliente.Size = new System.Drawing.Size(1035, 449);
+            this.dgvCliente.TabIndex = 8;
+            // 
             // ClienteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(1155, 667);
+            this.Controls.Add(this.dgvCliente);
             this.Controls.Add(this.btn_excluir);
             this.Controls.Add(this.btn_editar);
             this.Controls.Add(this.label3);
@@ -87,6 +100,7 @@ namespace PDVProject
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PDVProject";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCliente)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -97,6 +111,7 @@ namespace PDVProject
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btn_editar;
         private System.Windows.Forms.Button btn_excluir;
+        private System.Windows.Forms.DataGridView dgvCliente;
     }
 }
 

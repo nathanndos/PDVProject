@@ -8,14 +8,14 @@ namespace Entity
 {
     public class Funcionario:ClasseBase
     {
-        public static int IdFuncionarios { private get;  set; }  
+        public static int Id { private get;  set; }  
         public float Comissao { get;set; }  
         public string Funcao { get; set; }  
 
         public Funcionario()
         {
-            IdFuncionarios++;
-            Id = IdFuncionarios;
+            Id++;
+            Codigo = Id;
             Ide = new string(ChaveAleatoria());
         }
     }

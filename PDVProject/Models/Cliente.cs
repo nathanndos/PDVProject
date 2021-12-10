@@ -8,15 +8,15 @@ namespace Entity
 {
     public class Cliente:ClasseBase//Entidade Cliente
     {
-        public static int Id_Clientes { private get; set; }
+        public static int Id { private get; set; }
         public string Email { get; set; }
         public string SobreNome{get; set;}
         public string Cpf {get; set;}
 
         public Cliente()
         {
-            Id_Clientes++;
-            Id = Id_Clientes;
+            Id++;
+            Codigo = Id;
             Ide = new string(ChaveAleatoria());
         }
     }
