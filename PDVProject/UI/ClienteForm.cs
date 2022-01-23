@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PDVProject.UI;
+using BLL;
+
 namespace PDVProject
 {
     public partial class ClienteForm : Form
@@ -17,6 +19,14 @@ namespace PDVProject
         public ClienteForm()
         {
             InitializeComponent();
+            dataGridCliente.DataSource = ClienteBLL.getDataTable();
+            dataGridCliente.Columns[0].Width = 70;
+            dataGridCliente.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridCliente.Columns[1].Width = 180;
+            dataGridCliente.Columns[3].Width = 230;
+            dataGridCliente.Columns[4].Width = 110;
+            dataGridCliente.Columns[5].Width = 200;
+            dataGridCliente.Columns[6].Width = 120;
         }
 
         private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -55,6 +65,11 @@ namespace PDVProject
             {
                 MessageBox.Show("Erro");
             }*/
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

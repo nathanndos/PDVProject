@@ -18,13 +18,14 @@ namespace PDVProject.UI
         }
 
         private void MainForm_Load(object sender, EventArgs e)
-        {
+        { 
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             ClienteForm clienteForm = new ClienteForm();
+            
             clienteForm.Show();
         }
 

@@ -10,22 +10,25 @@ using Entity;
 namespace DAL
 {
     public class ClienteDAL//Acesso ao banco de Dados
-{
+    {
         public static void createClient(Cliente cliente){
             //Maneira atual, visto que as informações do banco vem do ArdId
-            string textConexao = @"Data Source=DESKTOP-DFR8CKK\SQLEXPRESS;Initial Catalog=db_pdvproject;Integrated Security=True";
+            string textConexao = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
             using (SqlConnection conec = new SqlConnection(textConexao) ) {
                 try{
-                    const string sqlQuery = "INSERT INTO tbl_cliente(Id_cliente, Nome, Email) VALUES(@Id_cliente, @Nome, @Email)";
+                    const string sqlQuery = "INSERT INTO Cliente(id, ide, nome,sobrenome, cpf, email, dataCriacao,dataAlteracao) " +
+                                            "VALUES(@Id_cliente,@Ide, @Nome, @Sobrenome, @CPF, @Email, getdate(),getdate())";
 
                     SqlCommand cmd = new SqlCommand(sqlQuery,conec);//passa a query e passa a instancia da conexao 
                     cmd.Parameters.AddWithValue("@Id_cliente", cliente.Codigo);
-                    cmd.Parameters.AddWithValue("@Nome", cliente.Nome);//nome do parametro e valor pra ser adicionado
+                    cmd.Parameters.AddWithValue("@Ide", cliente.Ide);
+                    cmd.Parameters.AddWithValue("@Nome", cliente.Nome);
+                    cmd.Parameters.AddWithValue("@Sobrenome", cliente.SobreNome);
+                    cmd.Parameters.AddWithValue("@CPF", cliente.Cpf);//nome do parametro e valor pra ser adicionado
                     cmd.Parameters.AddWithValue("@Email", cliente.Email);
 
                     conec.Open();//abre a conexao
                     cmd.ExecuteNonQuery();//Executa uma instrução do blocoSQL
-
                 }
                 catch
                 {
@@ -64,11 +67,11 @@ namespace DAL
         }
         public static bool findClient(int codigo)
         {
-            string textConexao = @"Data Source=DESKTOP-DFR8CKK\SQLEXPRESS;Initial Catalog=db_pdvproject;Integrated Security=True";
+            string textConexao = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
             bool logic = false;
             using (SqlConnection conec = new SqlConnection(textConexao)){
                 try{
-                    const string sqlQuery = "SELECT COUNT(codigo) FROM tbl_cliente WHERE codigo = @codigo";
+                    const string sqlQuery = "SELECT COUNT(id) FROM Cliente WHERE id = @codigo";
                     SqlCommand cmd = new SqlCommand(sqlQuery, conec);
                     cmd.Parameters.AddWithValue("@codigo", codigo);
                     conec.Open();
@@ -93,11 +96,11 @@ namespace DAL
         }
         public static int getLastId()
         {
-            string textConexao = @"Data Source=DESKTOP-DFR8CKK\SQLEXPRESS;Initial Catalog=db_pdvproject;Integrated Security=True";
+            string textConexao = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
             int last;
             using (SqlConnection conec = new SqlConnection(textConexao)){
                 try{
-                    const string sqlQuery = "SELECT MAX(codigo) FROM cliente";
+                    const string sqlQuery = "SELECT MAX(id) FROM cliente";
                     SqlCommand cmd = new SqlCommand(sqlQuery, conec);
                     conec.Open();
                     last = int.Parse(cmd.ExecuteScalar().ToString());
@@ -116,10 +119,11 @@ namespace DAL
         }
         public static DataTable getData()
         {
-            string textConnection = @"Data Source=DESKTOP-DFR8CKK\SQLEXPRESS;Initial Catalog=db_pdvproject;Integrated Security=True";
+            string textConnection = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
             using (SqlConnection conec = new SqlConnection(textConnection)){
                 try{
-                    const string sqlQuery = "SELECT codigo, nome, sobrenome, email, cpf from cliente";
+                    const string sqlQuery = "SELECT id as Codigo, Ide,nome as Nome, sobrenome as Sobrenome, cpf as CPF, " +
+                        "email as 'E-mail', dataAlteracao as 'Data alteração', dataCriacao as 'Data Criação' from Cliente";
                     conec.Open();
                     using (SqlDataAdapter da = new SqlDataAdapter(sqlQuery, conec))
                     //Representa um conjunto de comandos SQL e uma conexão de banco de dados

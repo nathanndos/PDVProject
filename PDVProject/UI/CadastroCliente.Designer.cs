@@ -33,10 +33,10 @@ namespace PDVProject.UI
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtNomeCliente = new System.Windows.Forms.TextBox();
+            this.txtSobrenome = new System.Windows.Forms.TextBox();
+            this.txtCpfCliente = new System.Windows.Forms.TextBox();
+            this.txtEmailCliente = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -79,33 +79,33 @@ namespace PDVProject.UI
             this.label4.TabIndex = 3;
             this.label4.Text = "Cpf";
             // 
-            // textBox1
+            // txtNomeCliente
             // 
-            this.textBox1.Location = new System.Drawing.Point(96, 70);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(331, 23);
-            this.textBox1.TabIndex = 4;
+            this.txtNomeCliente.Location = new System.Drawing.Point(96, 70);
+            this.txtNomeCliente.Name = "txtNomeCliente";
+            this.txtNomeCliente.Size = new System.Drawing.Size(331, 23);
+            this.txtNomeCliente.TabIndex = 4;
             // 
-            // textBox2
+            // txtSobrenome
             // 
-            this.textBox2.Location = new System.Drawing.Point(124, 106);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(303, 23);
-            this.textBox2.TabIndex = 5;
+            this.txtSobrenome.Location = new System.Drawing.Point(124, 106);
+            this.txtSobrenome.Name = "txtSobrenome";
+            this.txtSobrenome.Size = new System.Drawing.Size(303, 23);
+            this.txtSobrenome.TabIndex = 5;
             // 
-            // textBox3
+            // txtCpfCliente
             // 
-            this.textBox3.Location = new System.Drawing.Point(96, 181);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(331, 23);
-            this.textBox3.TabIndex = 6;
+            this.txtCpfCliente.Location = new System.Drawing.Point(96, 181);
+            this.txtCpfCliente.Name = "txtCpfCliente";
+            this.txtCpfCliente.Size = new System.Drawing.Size(331, 23);
+            this.txtCpfCliente.TabIndex = 6;
             // 
-            // textBox4
+            // txtEmailCliente
             // 
-            this.textBox4.Location = new System.Drawing.Point(96, 142);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(331, 23);
-            this.textBox4.TabIndex = 7;
+            this.txtEmailCliente.Location = new System.Drawing.Point(96, 142);
+            this.txtEmailCliente.Name = "txtEmailCliente";
+            this.txtEmailCliente.Size = new System.Drawing.Size(331, 23);
+            this.txtEmailCliente.TabIndex = 7;
             // 
             // button1
             // 
@@ -144,6 +144,7 @@ namespace PDVProject.UI
             this.label5.Size = new System.Drawing.Size(97, 21);
             this.label5.TabIndex = 11;
             this.label5.Text = "Novo cliente";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // CadastroCliente
             // 
@@ -154,10 +155,10 @@ namespace PDVProject.UI
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtEmailCliente);
+            this.Controls.Add(this.txtCpfCliente);
+            this.Controls.Add(this.txtSobrenome);
+            this.Controls.Add(this.txtNomeCliente);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -165,6 +166,7 @@ namespace PDVProject.UI
             this.Name = "CadastroCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CadastroCliente";
+            this.Load += new System.EventHandler(this.CadastroCliente_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -176,10 +178,10 @@ namespace PDVProject.UI
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtNomeCliente;
+        private System.Windows.Forms.TextBox txtSobrenome;
+        private System.Windows.Forms.TextBox txtCpfCliente;
+        private System.Windows.Forms.TextBox txtEmailCliente;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;

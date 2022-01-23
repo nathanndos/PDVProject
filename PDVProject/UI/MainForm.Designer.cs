@@ -44,7 +44,7 @@ namespace PDVProject.UI
             // btnNovoCliente
             // 
             this.btnNovoCliente.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnNovoCliente.Location = new System.Drawing.Point(240, 474);
+            this.btnNovoCliente.Location = new System.Drawing.Point(309, 463);
             this.btnNovoCliente.Name = "btnNovoCliente";
             this.btnNovoCliente.Size = new System.Drawing.Size(156, 40);
             this.btnNovoCliente.TabIndex = 0;
@@ -55,7 +55,7 @@ namespace PDVProject.UI
             // btnNovoProduto
             // 
             this.btnNovoProduto.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnNovoProduto.Location = new System.Drawing.Point(240, 547);
+            this.btnNovoProduto.Location = new System.Drawing.Point(309, 536);
             this.btnNovoProduto.Name = "btnNovoProduto";
             this.btnNovoProduto.Size = new System.Drawing.Size(156, 40);
             this.btnNovoProduto.TabIndex = 1;
@@ -66,7 +66,7 @@ namespace PDVProject.UI
             // lb_caixa
             // 
             this.lb_caixa.Font = new System.Drawing.Font("Segoe UI", 54F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lb_caixa.Location = new System.Drawing.Point(258, 105);
+            this.lb_caixa.Location = new System.Drawing.Point(327, 94);
             this.lb_caixa.Name = "lb_caixa";
             this.lb_caixa.Size = new System.Drawing.Size(575, 96);
             this.lb_caixa.TabIndex = 3;
@@ -76,7 +76,7 @@ namespace PDVProject.UI
             // btn_func
             // 
             this.btn_func.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btn_func.Location = new System.Drawing.Point(479, 474);
+            this.btn_func.Location = new System.Drawing.Point(548, 463);
             this.btn_func.Name = "btn_func";
             this.btn_func.Size = new System.Drawing.Size(156, 40);
             this.btn_func.TabIndex = 4;
@@ -87,7 +87,7 @@ namespace PDVProject.UI
             // btn_vendas
             // 
             this.btn_vendas.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btn_vendas.Location = new System.Drawing.Point(479, 547);
+            this.btn_vendas.Location = new System.Drawing.Point(548, 536);
             this.btn_vendas.Name = "btn_vendas";
             this.btn_vendas.Size = new System.Drawing.Size(156, 40);
             this.btn_vendas.TabIndex = 5;
@@ -97,7 +97,7 @@ namespace PDVProject.UI
             // btn_pg
             // 
             this.btn_pg.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btn_pg.Location = new System.Drawing.Point(720, 474);
+            this.btn_pg.Location = new System.Drawing.Point(789, 463);
             this.btn_pg.Name = "btn_pg";
             this.btn_pg.Size = new System.Drawing.Size(156, 40);
             this.btn_pg.TabIndex = 6;
@@ -107,7 +107,7 @@ namespace PDVProject.UI
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(720, 547);
+            this.button1.Location = new System.Drawing.Point(789, 536);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(156, 40);
             this.button1.TabIndex = 7;
@@ -117,7 +117,7 @@ namespace PDVProject.UI
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(240, 258);
+            this.button2.Location = new System.Drawing.Point(309, 247);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(156, 58);
             this.button2.TabIndex = 8;
@@ -128,7 +128,7 @@ namespace PDVProject.UI
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button3.Location = new System.Drawing.Point(479, 258);
+            this.button3.Location = new System.Drawing.Point(517, 238);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(156, 58);
             this.button3.TabIndex = 9;
@@ -138,7 +138,7 @@ namespace PDVProject.UI
             // btn_finalizar
             // 
             this.btn_finalizar.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btn_finalizar.Location = new System.Drawing.Point(720, 258);
+            this.btn_finalizar.Location = new System.Drawing.Point(789, 247);
             this.btn_finalizar.Name = "btn_finalizar";
             this.btn_finalizar.Size = new System.Drawing.Size(156, 58);
             this.btn_finalizar.TabIndex = 10;
@@ -151,7 +151,7 @@ namespace PDVProject.UI
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1155, 667);
+            this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.btn_finalizar);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
