@@ -77,18 +77,25 @@ namespace PDVProject
             // 
             // dataGridCliente
             // 
-            this.dataGridCliente.AllowDrop = true;
             this.dataGridCliente.AllowUserToAddRows = false;
             this.dataGridCliente.AllowUserToDeleteRows = false;
             this.dataGridCliente.AllowUserToResizeColumns = false;
             this.dataGridCliente.AllowUserToResizeRows = false;
+            this.dataGridCliente.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.dataGridCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridCliente.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridCliente.Location = new System.Drawing.Point(57, 185);
             this.dataGridCliente.MultiSelect = false;
             this.dataGridCliente.Name = "dataGridCliente";
             this.dataGridCliente.RowTemplate.Height = 25;
+            this.dataGridCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridCliente.ShowCellErrors = false;
+            this.dataGridCliente.ShowCellToolTips = false;
+            this.dataGridCliente.ShowEditingIcon = false;
+            this.dataGridCliente.ShowRowErrors = false;
             this.dataGridCliente.Size = new System.Drawing.Size(1028, 378);
             this.dataGridCliente.TabIndex = 8;
+            this.dataGridCliente.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridClienteDoisCliques);
             // 
             // ClienteForm
             // 

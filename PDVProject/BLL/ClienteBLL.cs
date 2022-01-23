@@ -38,6 +38,10 @@ namespace BLL
             }
             return ClienteDAL.consultCodigo(int.Parse(name));
         }
+        public static Cliente getClient(int codigo)
+        {
+            return ClienteDAL.get(codigo);
+        }
        /* public static ClienteDAL get(int codigo)
         {
             return ClienteDAL.consultCodigo(codigo);

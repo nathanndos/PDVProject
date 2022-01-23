@@ -17,17 +17,25 @@ namespace PDVProject.UI {
     {
         InitializeComponent();
     }
+    public CadastroCliente(string nome, string sobrenome, string email, string cpf)
+    {
+        InitializeComponent();
+        txtNomeCliente.Text = nome; 
+        txtSobrenome.Text = sobrenome;  
+        txtCpfCliente.Text = cpf;
+        txtEmailCliente.Text = email;   
+    }
 
     private void button1_Click(object sender, EventArgs e)
     {
-            ClienteBLL.getLast();
+            //ClienteBLL.getLast();
             Cliente cliente = new Cliente();
             cliente.Nome = txtNomeCliente.Text;
             cliente.SobreNome = txtSobrenome.Text;
             cliente.Email = txtEmailCliente.Text;
             cliente.Cpf = txtCpfCliente.Text;
             ClienteBLL.save(cliente);
-            MessageBox.Show($"Cliente{cliente.Nome} salvo com sucesso!");
+            MessageBox.Show($"Cliente {cliente.Nome} salvo com sucesso!({cliente.Codigo})");
     }
 
         private void label5_Click(object sender, EventArgs e)

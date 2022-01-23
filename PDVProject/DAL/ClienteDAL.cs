@@ -42,16 +42,19 @@ namespace DAL
         }
         public static void updateClient(Cliente cliente)
         {
-            string textConexao = @"Data Source=DESKTOP-DFR8CKK\SQLEXPRESS;Initial Catalog=db_pdvproject;Integrated Security=True";
+            string textConexao = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
             using (SqlConnection conec = new SqlConnection(textConexao)){
                 try{
-                    const string sqlQuery = @"UPDATE tbl_cliente " +
-                                            "SET Nome = @Nome, Email = @Email "+
-                                            "WHERE Id_cliente = @Id_cliente";
+                    const string sqlQuery = @"UPDATE Cliente " +
+                                            "SET Nome = @Nome, Sobrenome = @Sobrenome,Email = @Email, Cpf = @Cpf, dataAlteracao = getdate() "+
+                                            "WHERE Id = @Codigo";
                     SqlCommand cmd = new SqlCommand(sqlQuery, conec);
+                    cmd.Parameters.AddWithValue("@Codigo", cliente.Codigo);
                     cmd.Parameters.AddWithValue("@Nome", cliente.Nome);
+                    cmd.Parameters.AddWithValue("@Sobrenome", cliente.SobreNome);
                     cmd.Parameters.AddWithValue("@Email", cliente.Email);
-                    cmd.Parameters.AddWithValue("@Id_cliente", cliente.Codigo);
+                    cmd.Parameters.AddWithValue("@Cpf", cliente.Cpf);
+
                     conec.Open();
                     cmd.ExecuteNonQuery();
                 }
@@ -146,7 +149,7 @@ namespace DAL
         } //Busca todos os dados
         public static DataTable consultClient(string valor)
         {
-            string textConnection = @"Data Source=DESKTOP-DFR8CKK\SQLEXPRESS;Initial Catalog=db_pdvproject;Integrated Security=True";
+            string textConnection = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
             using (SqlConnection conec = new SqlConnection(textConnection)){
                 try{
                     string sqlQuery = $"SELECT codigo,nome, sobrenome, email, cpf FROM cliente WHERE Nome LIKE '%{valor}%'";
@@ -192,6 +195,42 @@ namespace DAL
                 }
             }
         }//Consulta por codigo
+        public static Cliente get(int codigo)
+        {
+            string textConnection = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
+            Cliente cliente = new Cliente();
+            SqlDataReader dr = null;
+
+            using (SqlConnection conec = new SqlConnection(textConnection))
+            {
+                try
+                {
+                    const string sqlQuery = "SELECT nome, sobrenome, email, cpf FROM Cliente WHERE Id = @Codigo";
+                    SqlCommand cmd = new SqlCommand(sqlQuery, conec);
+
+                    cmd.Parameters.AddWithValue("@Codigo", codigo);
+                    conec.Open();
+                    dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                    while (dr.Read())
+                    {
+                        cliente.Nome = dr[0].ToString();
+                        cliente.SobreNome = dr[1].ToString();
+                        cliente.Email = dr[2].ToString();
+                        cliente.Cpf = dr[3].ToString();
+                    }                   
+                }
+                catch
+                {
+                    throw;
+                }
+                finally
+                {
+                    conec.Close();
+                }
+            }
+            
+            return cliente;
+        }
     }
 }
 

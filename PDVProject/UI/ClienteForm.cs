@@ -71,5 +71,14 @@ namespace PDVProject
         {
 
         }
+ 
+        private void dataGridClienteDoisCliques(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            Cliente cliente = ClienteBLL.getClient((int)dataGridCliente.Rows[e.RowIndex].Cells[0].Value);
+            CadastroCliente cadastroCliente = new CadastroCliente(cliente.Nome, cliente.SobreNome, cliente.Email, cliente.Cpf);
+            //MessageBox.Show("" + dataGridCliente.Rows[e.RowIndex].Cells[3].Value + dataGridCliente.Rows[e.RowIndex].Cells[2].Value);
+            // CadastroCliente cadastrocliente = new CadastroCliente(cliente.Nome, cliente.SobreNome, cliente.Cpf, cliente.Email);
+            cadastroCliente.Show();
+        }
     }
 }
