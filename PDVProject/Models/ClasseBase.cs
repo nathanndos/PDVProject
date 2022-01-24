@@ -8,9 +8,11 @@ namespace Entity
 {
     public abstract class ClasseBase
     {
-        public int Codigo { get; protected set; }
+        public int Codigo { get;set; }
         public string Nome { get; set; }
         public string Ide { get; set; } 
+        public int Status { get; set; } 
+
         public char[] ChaveAleatoria()
         {
             int tamanhoSenha = 23;

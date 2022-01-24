@@ -10,12 +10,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PDVProject.UI;
-using BLL;
 
 namespace PDVProject
 {
     public partial class ClienteForm : Form
     {
+        int linhaAtual;
         public ClienteForm()
         {
             InitializeComponent();
@@ -47,38 +47,65 @@ namespace PDVProject
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             CadastroCliente cadastrocliente = new CadastroCliente();
+            //ClienteBLL.getLast();
             cadastrocliente.Show();
-            /*ClienteBLL.getLast();
-            Cliente cliente1 = new Cliente();
-            //cliente1.Nome = txtNome.Text;
-            //cliente1.Email = txtEmail.Text;
-
-            try
-            {
-                ClienteBLL.save(cliente1);
-                MessageBox.Show("Cadastrado com sucesso!");
-                //txtNome.Text = "";
-                //txtEmail.Text = "";
-
-            }
-            catch(Exception)
-            {
-                MessageBox.Show("Erro");
-            }*/
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            
         }
- 
+        private void dataGridClienteUmClique(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            getLinha(e);
+        }
+
         private void dataGridClienteDoisCliques(object sender, DataGridViewCellMouseEventArgs e)
         {
-            Cliente cliente = ClienteBLL.getClient((int)dataGridCliente.Rows[e.RowIndex].Cells[0].Value);
-            CadastroCliente cadastroCliente = new CadastroCliente(cliente.Nome, cliente.SobreNome, cliente.Email, cliente.Cpf);
-            //MessageBox.Show("" + dataGridCliente.Rows[e.RowIndex].Cells[3].Value + dataGridCliente.Rows[e.RowIndex].Cells[2].Value);
-            // CadastroCliente cadastrocliente = new CadastroCliente(cliente.Nome, cliente.SobreNome, cliente.Cpf, cliente.Email);
+            Cliente cliente = getClienteLinha(e);
+            CadastroCliente cadastroCliente = new CadastroCliente(cliente.Codigo,cliente.Nome, cliente.SobreNome, cliente.Email, cliente.Cpf);
             cadastroCliente.Show();
+        }
+
+        private void dataGridCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            dataGridCliente.DataSource = ClienteBLL.getDataTable();
+        }
+        private void btn_editar_Click(object sender, EventArgs e)
+        {
+            Cliente cliente = ClienteBLL.getClient(linhaAtual);
+            startEdicao(cliente);
+        }
+
+
+        //-----------------
+        public int getLinha(DataGridViewCellMouseEventArgs e)
+        {
+
+            linhaAtual =  (int)dataGridCliente.Rows[e.RowIndex].Cells[0].Value;
+            return linhaAtual;
+            
+        }
+        public Cliente getClienteLinha(DataGridViewCellMouseEventArgs e)
+        {
+
+            Cliente cliente = ClienteBLL.getClient(getLinha(e));
+            return cliente;
+        }
+        private void startEdicao(Cliente cliente)
+        {
+            CadastroCliente cadastroCliente = new CadastroCliente(cliente.Codigo, cliente.Nome, cliente.SobreNome, cliente.Email, cliente.Cpf);
+            cadastroCliente.Show();
+        }
+
+        private void btn_excluir_Click(object sender, EventArgs e)
+        {
+            Cliente cliente = ClienteBLL.getClient(linhaAtual);
         }
     }
 }

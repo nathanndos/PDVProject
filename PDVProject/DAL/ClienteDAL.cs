@@ -16,8 +16,8 @@ namespace DAL
             string textConexao = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
             using (SqlConnection conec = new SqlConnection(textConexao) ) {
                 try{
-                    const string sqlQuery = "INSERT INTO Cliente(id, ide, nome,sobrenome, cpf, email, dataCriacao,dataAlteracao) " +
-                                            "VALUES(@Id_cliente,@Ide, @Nome, @Sobrenome, @CPF, @Email, getdate(),getdate())";
+                    const string sqlQuery = "INSERT INTO Cliente(id, ide, nome,sobrenome, cpf, email, dataCriacao,dataAlteracao, Status) " +
+                                            "VALUES(@Id_cliente,@Ide, @Nome, @Sobrenome, @CPF, @Email, getdate(),getdate(), @Status)";
 
                     SqlCommand cmd = new SqlCommand(sqlQuery,conec);//passa a query e passa a instancia da conexao 
                     cmd.Parameters.AddWithValue("@Id_cliente", cliente.Codigo);
@@ -26,6 +26,7 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@Sobrenome", cliente.SobreNome);
                     cmd.Parameters.AddWithValue("@CPF", cliente.Cpf);//nome do parametro e valor pra ser adicionado
                     cmd.Parameters.AddWithValue("@Email", cliente.Email);
+                    cmd.Parameters.AddWithValue("@Status", cliente.Status);
 
                     conec.Open();//abre a conexao
                     cmd.ExecuteNonQuery();//Executa uma instrução do blocoSQL
@@ -82,8 +83,10 @@ namespace DAL
                     int valor = int.Parse(cmd.ExecuteScalar().ToString());         
                        //Executa a consulta e retorna a primeira coluna da primeira linha no conjunto de resultados retornado pela consulta
                        //Isso Explica o pq de usar o COUNT na consulta do BD
-                    if(valor == 0) { logic = true; }
-                    else { logic = false; }
+                    if(valor == 0) { 
+                        logic = true; }
+                    else { 
+                        logic = false; }
                     //A condição implica diretamente na camada BLL, fazendo uma consulta e verificando existencia do registro
                 }
                 catch
@@ -108,6 +111,7 @@ namespace DAL
                     conec.Open();
                     last = int.Parse(cmd.ExecuteScalar().ToString());
                     //Verifica o ultimo id registrado no banco e o retorna
+                    
                 }
                 catch
                 {
@@ -126,7 +130,7 @@ namespace DAL
             using (SqlConnection conec = new SqlConnection(textConnection)){
                 try{
                     const string sqlQuery = "SELECT id as Codigo, Ide,nome as Nome, sobrenome as Sobrenome, cpf as CPF, " +
-                        "email as 'E-mail', dataAlteracao as 'Data alteração', dataCriacao as 'Data Criação' from Cliente";
+                        "email as 'E-mail', dataAlteracao as 'Data alteração', dataCriacao as 'Data Criação' from Cliente where Status = 0";
                     conec.Open();
                     using (SqlDataAdapter da = new SqlDataAdapter(sqlQuery, conec))
                     //Representa um conjunto de comandos SQL e uma conexão de banco de dados
@@ -205,7 +209,7 @@ namespace DAL
             {
                 try
                 {
-                    const string sqlQuery = "SELECT nome, sobrenome, email, cpf FROM Cliente WHERE Id = @Codigo";
+                    const string sqlQuery = "SELECT Id,Nome, Sobrenome, Email, Cpf FROM Cliente WHERE Id = @Codigo and Status = 0";
                     SqlCommand cmd = new SqlCommand(sqlQuery, conec);
 
                     cmd.Parameters.AddWithValue("@Codigo", codigo);
@@ -213,10 +217,11 @@ namespace DAL
                     dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                     while (dr.Read())
                     {
-                        cliente.Nome = dr[0].ToString();
-                        cliente.SobreNome = dr[1].ToString();
-                        cliente.Email = dr[2].ToString();
-                        cliente.Cpf = dr[3].ToString();
+                        cliente.Codigo = (int)dr[0];
+                        cliente.Nome = dr[1].ToString();
+                        cliente.SobreNome = dr[2].ToString();
+                        cliente.Email = dr[3].ToString();
+                        cliente.Cpf = dr[4].ToString();
                     }                   
                 }
                 catch
@@ -230,6 +235,29 @@ namespace DAL
             }
             
             return cliente;
+        }
+        public static void delete(int codigo)
+        {
+            string textConexao = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
+            using (SqlConnection conec = new SqlConnection(textConexao))
+            {
+                try
+                {
+                    const string sqlQuery = @"UPDATE Cliente SET Status = -1 WHERE Id = @Codigo";
+                    SqlCommand cmd = new SqlCommand(sqlQuery, conec);
+                    cmd.Parameters.AddWithValue("@Codigo", codigo);
+                    conec.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    throw;
+                }
+                finally
+                {
+                    conec.Close();
+                }
+            }
         }
     }
 }

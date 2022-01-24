@@ -42,6 +42,11 @@ namespace BLL
         {
             return ClienteDAL.get(codigo);
         }
+
+        public static void deleteClient(int codigo)
+        {
+            ClienteDAL.delete(codigo); 
+        }
        /* public static ClienteDAL get(int codigo)
         {
             return ClienteDAL.consultCodigo(codigo);

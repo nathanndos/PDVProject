@@ -18,6 +18,12 @@ namespace Entity
             Id++;
             Codigo = Id;
             Ide = new string(ChaveAleatoria());
+            Status = 0;
+
+        }
+        public Cliente(int codigo)
+        {
+            Codigo = codigo;
         }
     }
 }

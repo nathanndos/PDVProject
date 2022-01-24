@@ -34,6 +34,7 @@ namespace PDVProject
             this.btn_editar = new System.Windows.Forms.Button();
             this.btn_excluir = new System.Windows.Forms.Button();
             this.dataGridCliente = new System.Windows.Forms.DataGridView();
+            this.btnAtualizar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCliente)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,6 +66,7 @@ namespace PDVProject
             this.btn_editar.TabIndex = 6;
             this.btn_editar.Text = "Editar";
             this.btn_editar.UseVisualStyleBackColor = true;
+            this.btn_editar.Click += new System.EventHandler(this.btn_editar_Click);
             // 
             // btn_excluir
             // 
@@ -74,6 +76,7 @@ namespace PDVProject
             this.btn_excluir.TabIndex = 7;
             this.btn_excluir.Text = "Excluir";
             this.btn_excluir.UseVisualStyleBackColor = true;
+            this.btn_excluir.Click += new System.EventHandler(this.btn_excluir_Click);
             // 
             // dataGridCliente
             // 
@@ -95,7 +98,19 @@ namespace PDVProject
             this.dataGridCliente.ShowRowErrors = false;
             this.dataGridCliente.Size = new System.Drawing.Size(1028, 378);
             this.dataGridCliente.TabIndex = 8;
+            this.dataGridCliente.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridCliente_CellContentClick);
+            this.dataGridCliente.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridClienteUmClique);
             this.dataGridCliente.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridClienteDoisCliques);
+            // 
+            // btnAtualizar
+            // 
+            this.btnAtualizar.Location = new System.Drawing.Point(215, 56);
+            this.btnAtualizar.Name = "btnAtualizar";
+            this.btnAtualizar.Size = new System.Drawing.Size(75, 72);
+            this.btnAtualizar.TabIndex = 9;
+            this.btnAtualizar.Text = "Atualizar";
+            this.btnAtualizar.UseVisualStyleBackColor = true;
+            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
             // 
             // ClienteForm
             // 
@@ -103,6 +118,7 @@ namespace PDVProject
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(1155, 667);
+            this.Controls.Add(this.btnAtualizar);
             this.Controls.Add(this.dataGridCliente);
             this.Controls.Add(this.btn_excluir);
             this.Controls.Add(this.btn_editar);
@@ -124,6 +140,7 @@ namespace PDVProject
         private System.Windows.Forms.Button btn_editar;
         private System.Windows.Forms.Button btn_excluir;
         private System.Windows.Forms.DataGridView dataGridCliente;
+        private System.Windows.Forms.Button btnAtualizar;
     }
 }
 

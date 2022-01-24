@@ -41,6 +41,7 @@ namespace PDVProject.UI
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -134,6 +135,7 @@ namespace PDVProject.UI
             this.button3.TabIndex = 10;
             this.button3.Text = "Limpar";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label5
             // 
@@ -146,11 +148,20 @@ namespace PDVProject.UI
             this.label5.Text = "Novo cliente";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Enabled = false;
+            this.txtCodigo.Location = new System.Drawing.Point(357, 21);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(70, 23);
+            this.txtCodigo.TabIndex = 12;
+            // 
             // CadastroCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(492, 328);
+            this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -186,5 +197,6 @@ namespace PDVProject.UI
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtCodigo;
     }
 }

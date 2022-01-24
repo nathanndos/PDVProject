@@ -17,9 +17,10 @@ namespace PDVProject.UI {
     {
         InitializeComponent();
     }
-    public CadastroCliente(string nome, string sobrenome, string email, string cpf)
+    public CadastroCliente(int codigo,string nome, string sobrenome, string email, string cpf)
     {
         InitializeComponent();
+        txtCodigo.Text = codigo.ToString();
         txtNomeCliente.Text = nome; 
         txtSobrenome.Text = sobrenome;  
         txtCpfCliente.Text = cpf;
@@ -28,8 +29,15 @@ namespace PDVProject.UI {
 
     private void button1_Click(object sender, EventArgs e)
     {
-            //ClienteBLL.getLast();
-            Cliente cliente = new Cliente();
+            Cliente cliente = null;
+            if (txtCodigo.Text==""){
+                ClienteBLL.getLast(); 
+                cliente = new Cliente();
+            }
+            else
+            {
+                 cliente = new Cliente(Int32.Parse(txtCodigo.Text));
+            }        
             cliente.Nome = txtNomeCliente.Text;
             cliente.SobreNome = txtSobrenome.Text;
             cliente.Email = txtEmailCliente.Text;
@@ -45,6 +53,15 @@ namespace PDVProject.UI {
 
         private void CadastroCliente_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            txtNomeCliente.Text = "";
+            txtCpfCliente.Text = "";
+            txtSobrenome.Text = "";
+            txtEmailCliente.Text = "";
 
         }
     }
