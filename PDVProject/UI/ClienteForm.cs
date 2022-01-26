@@ -82,6 +82,32 @@ namespace PDVProject
             startEdicao(cliente);
         }
 
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            string txt = txtBuscarCliente.Text;
+            if (txt.Trim() == "")
+            {
+                dataGridCliente.DataSource = ClienteBLL.getDataTable();
+                txtBuscarCliente.Text = "";
+            }
+            else
+            {
+                try
+                {
+                    dataGridCliente.DataSource = ClienteBLL.getClienteCodigo(Convert.ToInt32(txt));
+                }
+                catch
+                {
+                    dataGridCliente.DataSource = ClienteBLL.consultaNome(txtBuscarCliente.Text);
+                }
+            }
+        }
+        private void btn_excluir_Click(object sender, EventArgs e)
+        {
+            Cliente cliente = ClienteBLL.getClient(linhaAtual);
+            ClienteBLL.deleteClient(cliente.Codigo);
+            btnAtualizar_Click(sender, e);
+        }
 
         //-----------------
         public int getLinha(DataGridViewCellMouseEventArgs e)
@@ -103,9 +129,8 @@ namespace PDVProject
             cadastroCliente.Show();
         }
 
-        private void btn_excluir_Click(object sender, EventArgs e)
-        {
-            Cliente cliente = ClienteBLL.getClient(linhaAtual);
-        }
+
+
+
     }
 }

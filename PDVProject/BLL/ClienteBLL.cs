@@ -30,13 +30,10 @@ namespace BLL
         {
             return ClienteDAL.getData();
         }
-        public static DataTable consultaNome(string name, bool tipoNome)
+        public static DataTable consultaNome(string name)
         {
-            if (tipoNome == true)
-            {
-                return ClienteDAL.consultClient(name);
-            }
-            return ClienteDAL.consultCodigo(int.Parse(name));
+                return ClienteDAL.consultClient(name);    
+            //return ClienteDAL.consultCodigo(int.Parse(name));
         }
         public static Cliente getClient(int codigo)
         {
@@ -47,10 +44,10 @@ namespace BLL
         {
             ClienteDAL.delete(codigo); 
         }
-       /* public static ClienteDAL get(int codigo)
+       public static DataTable getClienteCodigo(int codigo)
         {
             return ClienteDAL.consultCodigo(codigo);
-        }*/
+        }
     }
 }
 

@@ -128,7 +128,7 @@ namespace PDVProject.UI
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button3.Location = new System.Drawing.Point(517, 238);
+            this.button3.Location = new System.Drawing.Point(548, 247);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(156, 58);
             this.button3.TabIndex = 9;

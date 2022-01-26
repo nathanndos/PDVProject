@@ -35,6 +35,8 @@ namespace PDVProject
             this.btn_excluir = new System.Windows.Forms.Button();
             this.dataGridCliente = new System.Windows.Forms.DataGridView();
             this.btnAtualizar = new System.Windows.Forms.Button();
+            this.txtBuscarCliente = new System.Windows.Forms.TextBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCliente)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,12 +114,31 @@ namespace PDVProject
             this.btnAtualizar.UseVisualStyleBackColor = true;
             this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
             // 
+            // txtBuscarCliente
+            // 
+            this.txtBuscarCliente.Location = new System.Drawing.Point(57, 147);
+            this.txtBuscarCliente.Name = "txtBuscarCliente";
+            this.txtBuscarCliente.Size = new System.Drawing.Size(908, 23);
+            this.txtBuscarCliente.TabIndex = 10;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(984, 147);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(101, 23);
+            this.btnBuscar.TabIndex = 11;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
             // ClienteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(1155, 667);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.txtBuscarCliente);
             this.Controls.Add(this.btnAtualizar);
             this.Controls.Add(this.dataGridCliente);
             this.Controls.Add(this.btn_excluir);
@@ -141,6 +162,8 @@ namespace PDVProject
         private System.Windows.Forms.Button btn_excluir;
         private System.Windows.Forms.DataGridView dataGridCliente;
         private System.Windows.Forms.Button btnAtualizar;
+        private System.Windows.Forms.TextBox txtBuscarCliente;
+        private System.Windows.Forms.Button btnBuscar;
     }
 }
 

@@ -75,7 +75,7 @@ namespace DAL
             bool logic = false;
             using (SqlConnection conec = new SqlConnection(textConexao)){
                 try{
-                    const string sqlQuery = "SELECT COUNT(id) FROM Cliente WHERE id = @codigo";
+                    const string sqlQuery = "SELECT COUNT(id) FROM Cliente WHERE id = @codigo and status = 0";
                     SqlCommand cmd = new SqlCommand(sqlQuery, conec);
                     cmd.Parameters.AddWithValue("@codigo", codigo);
                     conec.Open();
@@ -156,7 +156,9 @@ namespace DAL
             string textConnection = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
             using (SqlConnection conec = new SqlConnection(textConnection)){
                 try{
-                    string sqlQuery = $"SELECT codigo,nome, sobrenome, email, cpf FROM cliente WHERE Nome LIKE '%{valor}%'";
+                    string sqlQuery = $"SELECT id as Codigo, Ide,nome as Nome, sobrenome as Sobrenome, cpf as CPF, " +
+                        $"email as 'E-mail', dataAlteracao as 'Data alteração', dataCriacao as 'Data Criação' from Cliente " +
+                        $"where nome LIKE '%{valor}%' OR sobrenome LIKE '%{valor}%' or email LIKE '%{valor}%' and Status = 0";
                     conec.Open();
                     using (SqlDataAdapter da = new SqlDataAdapter(sqlQuery, conec))
                     //Representa um conjunto de comandos SQL e uma conexão de banco de dados
@@ -175,10 +177,12 @@ namespace DAL
         }//Consulta por nome
         public static DataTable consultCodigo(int valor)
         {
-            string textConnection = @"Data Source=DESKTOP-DFR8CKK\SQLEXPRESS;Initial Catalog=db_pdvproject;Integrated Security=True";
+            string textConnection = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
             using (SqlConnection conec = new SqlConnection(textConnection)){
                 try{
-                    string sqlQuery = $"SELECT codigo, nome, sobrenome, email, cpf FROM cliente WHERE codigo = {valor}";
+                    string sqlQuery = $"SELECT id as Codigo, Ide,nome as Nome, sobrenome as Sobrenome, cpf as CPF, " +
+                        $"email as 'E-mail', dataAlteracao as 'Data alteração', dataCriacao as 'Data Criação' from Cliente " +
+                        $"where id = {valor} or cpf LIKE '{valor}%' and Status = 0";
                     conec.Open();
                     using (SqlDataAdapter da = new SqlDataAdapter(sqlQuery, conec))
                     //Representa um conjunto de comandos SQL e uma conexão de banco de dados
