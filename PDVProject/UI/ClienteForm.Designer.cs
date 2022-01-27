@@ -120,6 +120,8 @@ namespace PDVProject
             this.txtBuscarCliente.Name = "txtBuscarCliente";
             this.txtBuscarCliente.Size = new System.Drawing.Size(908, 23);
             this.txtBuscarCliente.TabIndex = 10;
+            this.txtBuscarCliente.Enter += new System.EventHandler(this.focoBuscaCliente);
+            this.txtBuscarCliente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keyBuscarCliente);
             // 
             // btnBuscar
             // 

@@ -53,7 +53,7 @@ namespace PDVProject
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
         private void dataGridClienteUmClique(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -63,7 +63,7 @@ namespace PDVProject
         private void dataGridClienteDoisCliques(object sender, DataGridViewCellMouseEventArgs e)
         {
             Cliente cliente = getClienteLinha(e);
-            CadastroCliente cadastroCliente = new CadastroCliente(cliente.Codigo,cliente.Nome, cliente.SobreNome, cliente.Email, cliente.Cpf);
+            CadastroCliente cadastroCliente = new CadastroCliente(cliente.Codigo, cliente.Nome, cliente.SobreNome, cliente.Email, cliente.Cpf);
             cadastroCliente.Show();
         }
 
@@ -108,14 +108,25 @@ namespace PDVProject
             ClienteBLL.deleteClient(cliente.Codigo);
             btnAtualizar_Click(sender, e);
         }
+        private void focoBuscaCliente(object sender, EventArgs e)
+        {
+        }
+
+        private void keyBuscarCliente(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == (char)Keys.Enter)
+            {
+                dataGridCliente.DataSource = ClienteBLL.getDataTable();
+            }
+        }
 
         //-----------------
         public int getLinha(DataGridViewCellMouseEventArgs e)
         {
 
-            linhaAtual =  (int)dataGridCliente.Rows[e.RowIndex].Cells[0].Value;
+            linhaAtual = (int)dataGridCliente.Rows[e.RowIndex].Cells[0].Value;
             return linhaAtual;
-            
+
         }
         public Cliente getClienteLinha(DataGridViewCellMouseEventArgs e)
         {
@@ -128,8 +139,6 @@ namespace PDVProject
             CadastroCliente cadastroCliente = new CadastroCliente(cliente.Codigo, cliente.Nome, cliente.SobreNome, cliente.Email, cliente.Cpf);
             cadastroCliente.Show();
         }
-
-
 
 
     }

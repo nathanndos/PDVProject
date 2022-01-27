@@ -38,10 +38,11 @@ namespace PDVProject.UI
             this.txtCpfCliente = new System.Windows.Forms.TextBox();
             this.txtEmailCliente = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnSalvarContinuar = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.LabelMsgCliente = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -118,14 +119,15 @@ namespace PDVProject.UI
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnSalvarContinuar
             // 
-            this.button2.Location = new System.Drawing.Point(172, 236);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(116, 23);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Salvar e continuar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnSalvarContinuar.Location = new System.Drawing.Point(172, 236);
+            this.btnSalvarContinuar.Name = "btnSalvarContinuar";
+            this.btnSalvarContinuar.Size = new System.Drawing.Size(116, 23);
+            this.btnSalvarContinuar.TabIndex = 9;
+            this.btnSalvarContinuar.Text = "Salvar e continuar";
+            this.btnSalvarContinuar.UseVisualStyleBackColor = true;
+            this.btnSalvarContinuar.Click += new System.EventHandler(this.btnSalvarContinuar_Click);
             // 
             // button3
             // 
@@ -155,16 +157,28 @@ namespace PDVProject.UI
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(70, 23);
             this.txtCodigo.TabIndex = 12;
+            this.txtCodigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // LabelMsgCliente
+            // 
+            this.LabelMsgCliente.AutoSize = true;
+            this.LabelMsgCliente.ForeColor = System.Drawing.Color.Red;
+            this.LabelMsgCliente.Location = new System.Drawing.Point(12, 281);
+            this.LabelMsgCliente.Name = "LabelMsgCliente";
+            this.LabelMsgCliente.Size = new System.Drawing.Size(38, 15);
+            this.LabelMsgCliente.TabIndex = 13;
+            this.LabelMsgCliente.Text = "label6";
             // 
             // CadastroCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(492, 305);
+            this.Controls.Add(this.LabelMsgCliente);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnSalvarContinuar);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtEmailCliente);
             this.Controls.Add(this.txtCpfCliente);
@@ -194,9 +208,10 @@ namespace PDVProject.UI
         private System.Windows.Forms.TextBox txtCpfCliente;
         private System.Windows.Forms.TextBox txtEmailCliente;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnSalvarContinuar;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.Label LabelMsgCliente;
     }
 }

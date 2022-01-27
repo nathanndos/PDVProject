@@ -12,39 +12,33 @@ using BLL;
 
 namespace PDVProject.UI { 
     public partial class CadastroCliente : Form
-{
-    public CadastroCliente()
     {
-        InitializeComponent();
-    }
-    public CadastroCliente(int codigo,string nome, string sobrenome, string email, string cpf)
-    {
-        InitializeComponent();
-        txtCodigo.Text = codigo.ToString();
-        txtNomeCliente.Text = nome; 
-        txtSobrenome.Text = sobrenome;  
-        txtCpfCliente.Text = cpf;
-        txtEmailCliente.Text = email;   
-    }
+        public CadastroCliente()
+        {
+            InitializeComponent();
+            limparLabel();
+        }
+        public CadastroCliente(int codigo,string nome, string sobrenome, string email, string cpf)
+        {
+            InitializeComponent();
+            limparLabel();
+            txtCodigo.Text = codigo.ToString();
+            txtNomeCliente.Text = nome; 
+            txtSobrenome.Text = sobrenome;  
+            txtCpfCliente.Text = cpf;
+            txtEmailCliente.Text = email;   
+        }
 
-    private void button1_Click(object sender, EventArgs e)
-    {
-            Cliente cliente = null;
-            if (txtCodigo.Text==""){
-                ClienteBLL.getLast(); 
-                cliente = new Cliente();
-            }
-            else
-            {
-                 cliente = new Cliente(Int32.Parse(txtCodigo.Text));
-            }        
-            cliente.Nome = txtNomeCliente.Text;
-            cliente.SobreNome = txtSobrenome.Text;
-            cliente.Email = txtEmailCliente.Text;
-            cliente.Cpf = txtCpfCliente.Text;
-            ClienteBLL.save(cliente);
-            MessageBox.Show($"Cliente {cliente.Nome} salvo com sucesso!({cliente.Codigo})");
-    }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            salvarCadastro();
+            Close();
+        }
+        private void btnSalvarContinuar_Click(object sender, EventArgs e)
+        {
+            salvarCadastro();
+            LabelMsgCliente.Text = "Salvo com sucesso!";
+        }
 
         private void label5_Click(object sender, EventArgs e)
         {
@@ -62,7 +56,34 @@ namespace PDVProject.UI {
             txtCpfCliente.Text = "";
             txtSobrenome.Text = "";
             txtEmailCliente.Text = "";
+            limparLabel();
 
         }
+        //-----------------------
+
+        public void salvarCadastro()
+        {
+            Cliente cliente = null;
+            if (txtCodigo.Text == "")
+            {
+                ClienteBLL.getLast();
+                cliente = new Cliente();
+            }
+            else
+            {
+                cliente = new Cliente(Int32.Parse(txtCodigo.Text));
+            }
+            cliente.Nome = txtNomeCliente.Text;
+            cliente.SobreNome = txtSobrenome.Text;
+            cliente.Email = txtEmailCliente.Text;
+            cliente.Cpf = txtCpfCliente.Text;
+            ClienteBLL.save(cliente);
+        }
+
+        public void limparLabel()
+        {
+            LabelMsgCliente.Text = "";
+        }
+       
     }
 }
