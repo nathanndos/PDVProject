@@ -11,19 +11,25 @@ namespace DAL
 {
     public class FuncionarioDAL
     {
-        public static void createFunc(Funcionario func)
+        public static void createFuncionario(Funcionario func)
         {
             //Maneira atual, visto que as informações do banco vem do ArdId
-            string textConexao = @"Data Source=DESKTOP-DFR8CKK\SQLEXPRESS;Initial Catalog=db_pdvproject;Integrated Security=True";
+            string textConexao = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
             using (SqlConnection conec = new SqlConnection(textConexao))
             {
                 try
                 {
-                    const string sqlQuery = "INSERT INTO Funcionario(Codigo, Nome, Comissao, Funcao) VALUES(@Codigo, @nome, @funcao, @comissao)";
+                    const string sqlQuery = "INSERT INTO Cliente(id, ide, nome, funcao, comissao, dataCriacao,dataAlteracao, Status) " +
+                                            "VALUES(@Id ,@Ide, @Nome, @Funcao, @Comissao, getdate(),getdate(), @Status)";
+
                     SqlCommand cmd = new SqlCommand(sqlQuery, conec);//passa a query e passa a instancia da conexao 
-                    cmd.Parameters.AddWithValue("@codigo", func.Codigo);
-                    cmd.Parameters.AddWithValue("@nome", func.Nome);//nome do parametro e valor pra ser adicionado
-                    cmd.Parameters.AddWithValue("@funcao", func.Funcao);
+                    cmd.Parameters.AddWithValue("@Id", func.Codigo);
+                    cmd.Parameters.AddWithValue("@Ide", func.Ide);
+                    cmd.Parameters.AddWithValue("@Nome", func.Nome);
+                    cmd.Parameters.AddWithValue("@Funcao", func.Funcao);
+                    cmd.Parameters.AddWithValue("@Comissao", func.Comissao);//nome do parametro e valor pra ser adicionado             
+                    cmd.Parameters.AddWithValue("@Status", func.Status);
+
                     conec.Open();//abre a conexao
                     cmd.ExecuteNonQuery();//Executa uma instrução do blocoSQL
                 }
@@ -37,19 +43,21 @@ namespace DAL
                 }
             }
         }
-        public static void updateFunc(Funcionario func)
+        public static void updateFuncionario(Funcionario func)
         {
-            string textConexao = @"Data Source=DESKTOP-DFR8CKK\SQLEXPRESS;Initial Catalog=db_pdvproject;Integrated Security=True";
-            using (SqlConnection conec = new SqlConnection(textConexao)){
-                try{
-                    const string sqlQuery = @"UPDATE Funcionario " +
-                                            "SET Nome = @nome, Comissao = @comissao, Funcao = @funcao " +
-                                            "WHERE codigo = @Codigo";
+            string textConexao = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
+            using (SqlConnection conec = new SqlConnection(textConexao))
+            {
+                try
+                {
+                    const string sqlQuery = @"UPDATE Funcionarios " +
+                                            "SET Nome = @Nome, Funcao = @Funcao, @Comissao = comissao, dataAlteracao = getdate() " +
+                                            "WHERE Id = @Codigo";
                     SqlCommand cmd = new SqlCommand(sqlQuery, conec);
-                    cmd.Parameters.AddWithValue("@nome", func.Nome);
-                    cmd.Parameters.AddWithValue("@comissao", func.Comissao);
-                    cmd.Parameters.AddWithValue("@funcao", func.Funcao);
-                    cmd.Parameters.AddWithValue("@codigo", func.Codigo);
+                    cmd.Parameters.AddWithValue("@Codigo", func.Codigo);
+                    cmd.Parameters.AddWithValue("@Nome", func.Nome);
+                    cmd.Parameters.AddWithValue("@Comissao", func.Comissao);
+
                     conec.Open();
                     cmd.ExecuteNonQuery();
                 }
@@ -63,14 +71,15 @@ namespace DAL
                 }
             }
         }
-        public static bool findFunc(int codigo)
+        public static bool findFuncionario(int codigo)
         {
-            string textConexao = @"Data Source=DESKTOP-DFR8CKK\SQLEXPRESS;Initial Catalog=db_pdvproject;Integrated Security=True";
+            string textConexao = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
             bool logic = false;
-            using (SqlConnection conec = new SqlConnection(textConexao)){
+            using (SqlConnection conec = new SqlConnection(textConexao))
+            {
                 try
                 {
-                    const string sqlQuery = "SELECT COUNT(Codigo) FROM Funcionario WHERE Codigo = @codigo";
+                    const string sqlQuery = "SELECT COUNT(id) FROM Funcionarios WHERE id = @codigo and status = 0";
                     SqlCommand cmd = new SqlCommand(sqlQuery, conec);
                     cmd.Parameters.AddWithValue("@codigo", codigo);
                     conec.Open();
@@ -78,8 +87,14 @@ namespace DAL
                     int valor = int.Parse(cmd.ExecuteScalar().ToString());
                     //Executa a consulta e retorna a primeira coluna da primeira linha no conjunto de resultados retornado pela consulta
                     //Isso Explica o pq de usar o COUNT na consulta do BD
-                    if (valor == 0) { logic = true; }
-                    else { logic = false; }
+                    if (valor == 0)
+                    {
+                        logic = true;
+                    }
+                    else
+                    {
+                        logic = false;
+                    }
                     //A condição implica diretamente na camada BLL, fazendo uma consulta e verificando existencia do registro
                 }
                 catch
@@ -95,15 +110,18 @@ namespace DAL
         }
         public static int getLastId()
         {
-            string textConexao = @"Data Source=DESKTOP-DFR8CKK\SQLEXPRESS;Initial Catalog=db_pdvproject;Integrated Security=True";
+            string textConexao = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
             int last;
-            using (SqlConnection conec = new SqlConnection(textConexao)){
-                try{
-                    const string sqlQuery = "SELECT MAX(Codigo) FROM Funcionario";
+            using (SqlConnection conec = new SqlConnection(textConexao))
+            {
+                try
+                {
+                    const string sqlQuery = "SELECT MAX(id) FROM FUNCIONARIOS";
                     SqlCommand cmd = new SqlCommand(sqlQuery, conec);
                     conec.Open();
                     last = int.Parse(cmd.ExecuteScalar().ToString());
                     //Verifica o ultimo id registrado no banco e o retorna
+
                 }
                 catch
                 {
@@ -118,10 +136,13 @@ namespace DAL
         }
         public static DataTable getData()
         {
-            string textConnection = @"Data Source=DESKTOP-DFR8CKK\SQLEXPRESS;Initial Catalog=db_pdvproject;Integrated Security=True";
-            using (SqlConnection conec = new SqlConnection(textConnection)){
-                try{
-                    const string sqlQuery = "SELECT Codigo, Nome, Funcao, Comissao FROM Funcionario";
+            string textConnection = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
+            using (SqlConnection conec = new SqlConnection(textConnection))
+            {
+                try
+                {
+                    const string sqlQuery = "SELECT  id as Codigo, ide, nome, funcao, comissao, dataCriacao,dataAlteracao, Status " +
+                        "FROM Funcionarios WHERE Status = 0";
                     conec.Open();
                     using (SqlDataAdapter da = new SqlDataAdapter(sqlQuery, conec))
                     //Representa um conjunto de comandos SQL e uma conexão de banco de dados
@@ -142,12 +163,16 @@ namespace DAL
                 }
             }
         } //Busca todos os dados
-        public static DataTable consultFunc(string valor)
+        public static DataTable consultFuncionario(string valor)
         {
-            string textConnection = @"Data Source=DESKTOP-DFR8CKK\SQLEXPRESS;Initial Catalog=db_pdvproject;Integrated Security=True";
-            using (SqlConnection conec = new SqlConnection(textConnection)){
-                try{
-                    string sqlQuery = $"SELECT Codigo, Nome, Funcao, Comissao FROM Funcionario WHERE Nome LIKE '%{valor}%'";
+            string textConnection = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
+            using (SqlConnection conec = new SqlConnection(textConnection))
+            {
+                try
+                {
+                    string sqlQuery = $"SELECT id as Codigo, Ide,nome as Nome, sobrenome as Sobrenome, cpf as CPF, " +
+                        $"email as 'E-mail', dataAlteracao as 'Data alteração', dataCriacao as 'Data Criação' from Cliente " +
+                        $"where nome LIKE '%{valor}%' OR sobrenome LIKE '%{valor}%' or email LIKE '%{valor}%' and Status = 0";
                     conec.Open();
                     using (SqlDataAdapter da = new SqlDataAdapter(sqlQuery, conec))
                     //Representa um conjunto de comandos SQL e uma conexão de banco de dados
@@ -167,12 +192,14 @@ namespace DAL
         }//Consulta por nome
         public static DataTable consultCodigo(int valor)
         {
-            string textConnection = @"Data Source=DESKTOP-DFR8CKK\SQLEXPRESS;Initial Catalog=db_pdvproject;Integrated Security=True";
+            string textConnection = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
             using (SqlConnection conec = new SqlConnection(textConnection))
             {
                 try
                 {
-                    string sqlQuery = $"SELECT Codigo, Nome, Funcao, Comissao FROM Funcionario WHERE codigo = {valor}";
+                    string sqlQuery = $"SELECT id as Codigo, Ide,nome as Nome, sobrenome as Sobrenome, cpf as CPF, " +
+                        $"email as 'E-mail', dataAlteracao as 'Data alteração', dataCriacao as 'Data Criação' from Cliente " +
+                        $"where id = {valor} or cpf LIKE '{valor}%' and Status = 0";
                     conec.Open();
                     using (SqlDataAdapter da = new SqlDataAdapter(sqlQuery, conec))
                     //Representa um conjunto de comandos SQL e uma conexão de banco de dados
@@ -193,5 +220,64 @@ namespace DAL
                 }
             }
         }//Consulta por codigo
+        public static Funcionario get(int codigo)
+        {
+            string textConnection = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
+            Funcionario funcionario = new Funcionario();
+            SqlDataReader dr = null;
+
+            using (SqlConnection conec = new SqlConnection(textConnection))
+            {
+                try
+                {
+                    const string sqlQuery = "SELECT Id,Nome, Funcao, Comissao FROM Funcionarios WHERE Id = @Codigo and Status = 0";
+                    SqlCommand cmd = new SqlCommand(sqlQuery, conec);
+
+                    cmd.Parameters.AddWithValue("@Codigo", codigo);
+                    conec.Open();
+                    dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                    while (dr.Read())
+                    {
+                        funcionario.Codigo = (int)dr[0];
+                        funcionario.Nome = dr[1].ToString();
+                        funcionario.Funcao = dr[2].ToString();
+                        funcionario.Comissao = (float)dr[3];
+                    }
+                }
+                catch
+                {
+                    throw;
+                }
+                finally
+                {
+                    conec.Close();
+                }
+            }
+
+            return funcionario;
+        }
+        public static void delete(int codigo)
+        {
+            string textConexao = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
+            using (SqlConnection conec = new SqlConnection(textConexao))
+            {
+                try
+                {
+                    const string sqlQuery = @"UPDATE Funcionarios SET Status = -1 WHERE Id = @Codigo";
+                    SqlCommand cmd = new SqlCommand(sqlQuery, conec);
+                    cmd.Parameters.AddWithValue("@Codigo", codigo);
+                    conec.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    throw;
+                }
+                finally
+                {
+                    conec.Close();
+                }
+            }
+        }
     }
 }

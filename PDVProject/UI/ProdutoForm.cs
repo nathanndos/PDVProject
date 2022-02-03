@@ -15,7 +15,15 @@ namespace PDVProject.UI
         public ProdutoForm()
         {
             InitializeComponent();
-            
+            //dataGridProduto.DataSource = ProdutoBLL.getDataTable();
+            //dataGridProduto.Columns[0].Width = 70;
+            //dataGridProduto.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //dataGridProduto.Columns[1].Width = 180;
+            //dataGridProduto.Columns[3].Width = 230;
+            //dataGridProduto.Columns[4].Width = 110;
+            //dataGridProduto.Columns[5].Width = 200;
+            //dataGridProduto.Columns[6].Width = 120;
+
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)

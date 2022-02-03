@@ -17,6 +17,7 @@ namespace PDVProject.UI {
         {
             InitializeComponent();
             limparLabel();
+            
         }
         public CadastroCliente(int codigo,string nome, string sobrenome, string email, string cpf)
         {
