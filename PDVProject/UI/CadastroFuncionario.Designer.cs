@@ -31,17 +31,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtComissao = new System.Windows.Forms.TextBox();
+            this.txtNome = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.btnSalvar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbTecnico = new System.Windows.Forms.RadioButton();
+            this.rbCaixa = new System.Windows.Forms.RadioButton();
+            this.rbGerente = new System.Windows.Forms.RadioButton();
+            this.rbEntregador = new System.Windows.Forms.RadioButton();
+            this.rbVendedor = new System.Windows.Forms.RadioButton();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,11 +50,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(187, 25);
+            this.label1.Location = new System.Drawing.Point(169, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(131, 21);
+            this.label1.Size = new System.Drawing.Size(92, 21);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Novo funcionário";
+            this.label1.Text = "Funcionário";
             // 
             // label2
             // 
@@ -73,123 +74,139 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Comissão";
             // 
-            // textBox1
+            // txtComissao
             // 
-            this.textBox1.Location = new System.Drawing.Point(144, 112);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(280, 23);
-            this.textBox1.TabIndex = 5;
+            this.txtComissao.Location = new System.Drawing.Point(144, 112);
+            this.txtComissao.Name = "txtComissao";
+            this.txtComissao.Size = new System.Drawing.Size(280, 23);
+            this.txtComissao.TabIndex = 2;
             // 
-            // textBox2
+            // txtNome
             // 
-            this.textBox2.Location = new System.Drawing.Point(144, 72);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(280, 23);
-            this.textBox2.TabIndex = 6;
+            this.txtNome.Location = new System.Drawing.Point(144, 72);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(280, 23);
+            this.txtNome.TabIndex = 1;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(337, 251);
+            this.button3.Location = new System.Drawing.Point(337, 263);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(87, 23);
-            this.button3.TabIndex = 13;
+            this.button3.TabIndex = 9;
             this.button3.Text = "Limpar";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(169, 251);
+            this.button2.Location = new System.Drawing.Point(169, 263);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(116, 23);
-            this.button2.TabIndex = 12;
+            this.button2.TabIndex = 8;
             this.button2.Text = "Salvar e continuar";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnSalvar
             // 
-            this.button1.Location = new System.Drawing.Point(47, 251);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Salvar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(81, 22);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(76, 19);
-            this.checkBox1.TabIndex = 14;
-            this.checkBox1.Text = "Vendedor";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(179, 22);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(67, 19);
-            this.checkBox2.TabIndex = 15;
-            this.checkBox2.Text = "Gerente";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(287, 22);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(55, 19);
-            this.checkBox3.TabIndex = 16;
-            this.checkBox3.Text = "Caixa";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(113, 47);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(84, 19);
-            this.checkBox4.TabIndex = 17;
-            this.checkBox4.Text = "Entregador";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox5
-            // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(236, 47);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(66, 19);
-            this.checkBox5.TabIndex = 18;
-            this.checkBox5.Text = "Técnico";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.btnSalvar.Location = new System.Drawing.Point(47, 263);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(75, 23);
+            this.btnSalvar.TabIndex = 7;
+            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.checkBox1);
-            this.groupBox1.Controls.Add(this.checkBox5);
-            this.groupBox1.Controls.Add(this.checkBox4);
-            this.groupBox1.Controls.Add(this.checkBox2);
-            this.groupBox1.Controls.Add(this.checkBox3);
-            this.groupBox1.Location = new System.Drawing.Point(50, 141);
+            this.groupBox1.Controls.Add(this.rbTecnico);
+            this.groupBox1.Controls.Add(this.rbCaixa);
+            this.groupBox1.Controls.Add(this.rbGerente);
+            this.groupBox1.Controls.Add(this.rbEntregador);
+            this.groupBox1.Controls.Add(this.rbVendedor);
+            this.groupBox1.Location = new System.Drawing.Point(50, 157);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(374, 88);
-            this.groupBox1.TabIndex = 19;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Função";
+            // 
+            // rbTecnico
+            // 
+            this.rbTecnico.AutoSize = true;
+            this.rbTecnico.Location = new System.Drawing.Point(257, 47);
+            this.rbTecnico.Name = "rbTecnico";
+            this.rbTecnico.Size = new System.Drawing.Size(65, 19);
+            this.rbTecnico.TabIndex = 6;
+            this.rbTecnico.TabStop = true;
+            this.rbTecnico.Text = "Técnico";
+            this.rbTecnico.UseVisualStyleBackColor = true;
+            this.rbTecnico.CheckedChanged += new System.EventHandler(this.rbTecnico_CheckedChanged);
+            // 
+            // rbCaixa
+            // 
+            this.rbCaixa.AutoSize = true;
+            this.rbCaixa.Location = new System.Drawing.Point(290, 22);
+            this.rbCaixa.Name = "rbCaixa";
+            this.rbCaixa.Size = new System.Drawing.Size(54, 19);
+            this.rbCaixa.TabIndex = 5;
+            this.rbCaixa.TabStop = true;
+            this.rbCaixa.Text = "Caixa";
+            this.rbCaixa.UseVisualStyleBackColor = true;
+            // 
+            // rbGerente
+            // 
+            this.rbGerente.AutoSize = true;
+            this.rbGerente.Location = new System.Drawing.Point(192, 21);
+            this.rbGerente.Name = "rbGerente";
+            this.rbGerente.Size = new System.Drawing.Size(66, 19);
+            this.rbGerente.TabIndex = 4;
+            this.rbGerente.TabStop = true;
+            this.rbGerente.Text = "Gerente";
+            this.rbGerente.UseVisualStyleBackColor = true;
+            // 
+            // rbEntregador
+            // 
+            this.rbEntregador.AutoSize = true;
+            this.rbEntregador.Location = new System.Drawing.Point(120, 47);
+            this.rbEntregador.Name = "rbEntregador";
+            this.rbEntregador.Size = new System.Drawing.Size(83, 19);
+            this.rbEntregador.TabIndex = 6;
+            this.rbEntregador.TabStop = true;
+            this.rbEntregador.Text = "Entregador";
+            this.rbEntregador.UseVisualStyleBackColor = true;
+            // 
+            // rbVendedor
+            // 
+            this.rbVendedor.AutoSize = true;
+            this.rbVendedor.Location = new System.Drawing.Point(96, 21);
+            this.rbVendedor.Name = "rbVendedor";
+            this.rbVendedor.Size = new System.Drawing.Size(75, 19);
+            this.rbVendedor.TabIndex = 3;
+            this.rbVendedor.TabStop = true;
+            this.rbVendedor.Text = "Vendedor";
+            this.rbVendedor.UseVisualStyleBackColor = true;
+            // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Enabled = false;
+            this.txtCodigo.Location = new System.Drawing.Point(363, 27);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(61, 23);
+            this.txtCodigo.TabIndex = 20;
+            this.txtCodigo.TabStop = false;
             // 
             // CadastroFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(492, 313);
+            this.ClientSize = new System.Drawing.Size(492, 329);
+            this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.btnSalvar);
+            this.Controls.Add(this.txtNome);
+            this.Controls.Add(this.txtComissao);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -208,16 +225,17 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtComissao;
+        private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton rbTecnico;
+        private System.Windows.Forms.RadioButton rbCaixa;
+        private System.Windows.Forms.RadioButton rbGerente;
+        private System.Windows.Forms.RadioButton rbEntregador;
+        private System.Windows.Forms.RadioButton rbVendedor;
+        private System.Windows.Forms.TextBox txtCodigo;
     }
 }

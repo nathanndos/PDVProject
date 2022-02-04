@@ -86,35 +86,35 @@ namespace PDVProject.UI
             this.txtNomeCliente.Location = new System.Drawing.Point(96, 70);
             this.txtNomeCliente.Name = "txtNomeCliente";
             this.txtNomeCliente.Size = new System.Drawing.Size(331, 23);
-            this.txtNomeCliente.TabIndex = 4;
+            this.txtNomeCliente.TabIndex = 1;
             // 
             // txtSobrenome
             // 
             this.txtSobrenome.Location = new System.Drawing.Point(124, 106);
             this.txtSobrenome.Name = "txtSobrenome";
             this.txtSobrenome.Size = new System.Drawing.Size(303, 23);
-            this.txtSobrenome.TabIndex = 5;
+            this.txtSobrenome.TabIndex = 2;
             // 
             // txtCpfCliente
             // 
             this.txtCpfCliente.Location = new System.Drawing.Point(96, 181);
             this.txtCpfCliente.Name = "txtCpfCliente";
             this.txtCpfCliente.Size = new System.Drawing.Size(331, 23);
-            this.txtCpfCliente.TabIndex = 6;
+            this.txtCpfCliente.TabIndex = 4;
             // 
             // txtEmailCliente
             // 
             this.txtEmailCliente.Location = new System.Drawing.Point(96, 142);
             this.txtEmailCliente.Name = "txtEmailCliente";
             this.txtEmailCliente.Size = new System.Drawing.Size(331, 23);
-            this.txtEmailCliente.TabIndex = 7;
+            this.txtEmailCliente.TabIndex = 3;
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(50, 236);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
+            this.button1.TabIndex = 5;
             this.button1.Text = "Salvar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -124,7 +124,7 @@ namespace PDVProject.UI
             this.btnSalvarContinuar.Location = new System.Drawing.Point(172, 236);
             this.btnSalvarContinuar.Name = "btnSalvarContinuar";
             this.btnSalvarContinuar.Size = new System.Drawing.Size(116, 23);
-            this.btnSalvarContinuar.TabIndex = 9;
+            this.btnSalvarContinuar.TabIndex = 6;
             this.btnSalvarContinuar.Text = "Salvar e continuar";
             this.btnSalvarContinuar.UseVisualStyleBackColor = true;
             this.btnSalvarContinuar.Click += new System.EventHandler(this.btnSalvarContinuar_Click);
@@ -134,7 +134,7 @@ namespace PDVProject.UI
             this.button3.Location = new System.Drawing.Point(340, 236);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(87, 23);
-            this.button3.TabIndex = 10;
+            this.button3.TabIndex = 7;
             this.button3.Text = "Limpar";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
