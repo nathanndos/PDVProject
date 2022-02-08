@@ -69,7 +69,6 @@ namespace PDVProject
 
         private void dataGridCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
@@ -81,6 +80,8 @@ namespace PDVProject
             Cliente cliente = ClienteBLL.getClient(linhaAtual);
             startEdicao(cliente);
         }
+
+        //-----------------
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -111,7 +112,6 @@ namespace PDVProject
         private void focoBuscaCliente(object sender, EventArgs e)
         {
         }
-
         private void keyBuscarCliente(object sender, KeyEventArgs e)
         {
             if (e.KeyValue == (char)Keys.Enter)
@@ -119,18 +119,13 @@ namespace PDVProject
                 dataGridCliente.DataSource = ClienteBLL.getDataTable();
             }
         }
-
-        //-----------------
         public int getLinha(DataGridViewCellMouseEventArgs e)
         {
-
             linhaAtual = (int)dataGridCliente.Rows[e.RowIndex].Cells[0].Value;
             return linhaAtual;
-
         }
         public Cliente getClienteLinha(DataGridViewCellMouseEventArgs e)
         {
-
             Cliente cliente = ClienteBLL.getClient(getLinha(e));
             return cliente;
         }

@@ -34,7 +34,7 @@
             this.txtComissao = new System.Windows.Forms.TextBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnSalvarContinuar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbTecnico = new System.Windows.Forms.RadioButton();
@@ -43,6 +43,7 @@
             this.rbEntregador = new System.Windows.Forms.RadioButton();
             this.rbVendedor = new System.Windows.Forms.RadioButton();
             this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.lbFuncionario = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,15 +97,17 @@
             this.button3.TabIndex = 9;
             this.button3.Text = "Limpar";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button2
+            // btnSalvarContinuar
             // 
-            this.button2.Location = new System.Drawing.Point(169, 263);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(116, 23);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Salvar e continuar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnSalvarContinuar.Location = new System.Drawing.Point(169, 263);
+            this.btnSalvarContinuar.Name = "btnSalvarContinuar";
+            this.btnSalvarContinuar.Size = new System.Drawing.Size(116, 23);
+            this.btnSalvarContinuar.TabIndex = 8;
+            this.btnSalvarContinuar.Text = "Salvar e continuar";
+            this.btnSalvarContinuar.UseVisualStyleBackColor = true;
+            this.btnSalvarContinuar.Click += new System.EventHandler(this.btnSalvarContinuar_Click);
             // 
             // btnSalvar
             // 
@@ -195,15 +198,26 @@
             this.txtCodigo.TabIndex = 20;
             this.txtCodigo.TabStop = false;
             // 
+            // lbFuncionario
+            // 
+            this.lbFuncionario.AutoSize = true;
+            this.lbFuncionario.ForeColor = System.Drawing.Color.Red;
+            this.lbFuncionario.Location = new System.Drawing.Point(12, 305);
+            this.lbFuncionario.Name = "lbFuncionario";
+            this.lbFuncionario.Size = new System.Drawing.Size(38, 15);
+            this.lbFuncionario.TabIndex = 21;
+            this.lbFuncionario.Text = "label3";
+            // 
             // CadastroFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(492, 329);
+            this.Controls.Add(this.lbFuncionario);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnSalvarContinuar);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.txtComissao);
@@ -228,7 +242,7 @@
         private System.Windows.Forms.TextBox txtComissao;
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnSalvarContinuar;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rbTecnico;
@@ -237,5 +251,6 @@
         private System.Windows.Forms.RadioButton rbEntregador;
         private System.Windows.Forms.RadioButton rbVendedor;
         private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.Label lbFuncionario;
     }
 }

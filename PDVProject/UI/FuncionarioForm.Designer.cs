@@ -56,6 +56,7 @@
             this.btn_editar.TabIndex = 9;
             this.btn_editar.Text = "Editar";
             this.btn_editar.UseVisualStyleBackColor = true;
+            this.btn_editar.Click += new System.EventHandler(this.btn_editar_Click);
             // 
             // btnCadastrar
             // 
@@ -95,6 +96,8 @@
             this.dataGridFuncionarios.ShowRowErrors = false;
             this.dataGridFuncionarios.Size = new System.Drawing.Size(1028, 415);
             this.dataGridFuncionarios.TabIndex = 12;
+            this.dataGridFuncionarios.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridFuncionarios_UmClique);
+            this.dataGridFuncionarios.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridFuncionarios_DoisCliques);
             // 
             // button1
             // 

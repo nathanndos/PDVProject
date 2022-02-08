@@ -18,22 +18,56 @@ namespace PDVProject.UI
         public CadastroFuncionario()
         {
             InitializeComponent();
-            arrayButtons = new RadioButton[5] { rbCaixa, rbEntregador, rbGerente,rbTecnico,rbVendedor};
+            createArrayButtons();
         }
-
+        public CadastroFuncionario(int codigo, string nome, decimal comissao, string funcao)
+        {
+            InitializeComponent();
+            createArrayButtons();
+            txtCodigo.Text = codigo.ToString();
+            txtComissao.Text = comissao.ToString();
+            txtNome.Text = nome.ToString();
+            checkRadioButton(funcao);
+        }
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             try
             {
                 salvarCadastro();
+                Close();
 
             }catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(""+txtComissao.Text+getValueButton()+ex.Message);
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            clear();
+        }
+        private void btnSalvarContinuar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                salvarCadastro();
+                lbFuncionario.Text = "Cadastro salvo com sucesso!";
+            }
+            catch
+            {
+                lbFuncionario.Text = "Ocorreu um erro, tente novamente";
+            }
+        }
+        private void rbTecnico_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
         //-----------------------
 
+        public void createArrayButtons()
+        {
+            arrayButtons = new RadioButton[5] { rbCaixa, rbEntregador, rbGerente, rbTecnico, rbVendedor };
+        }
         public void salvarCadastro()
         {
             Funcionario funcionario = null;
@@ -57,16 +91,27 @@ namespace PDVProject.UI
             foreach (RadioButton rb in arrayButtons)
             {
                 if (rb.Checked == true)
-                {
                     return rb.Text;
-                }
             }
             return "";
         }
-
-        private void rbTecnico_CheckedChanged(object sender, EventArgs e)
+        public void clear()
         {
+            txtNome.Text = "";
+            txtCodigo.Text = "";
+            txtComissao = null;
+        }
+        public void checkRadioButton(string valor)
+        {
+            foreach (RadioButton radioButton in arrayButtons)
+            {
+                if (valor == radioButton.Text)
+                {
+                    radioButton.Checked = true;
+                    return;
+                }                                 
+            }
+        }
 
         }
-    }
 }

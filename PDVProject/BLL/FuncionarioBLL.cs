@@ -14,13 +14,9 @@ namespace BLL
         public static void save(Funcionario funcionario)
         {
             if (FuncionarioDAL.findFuncionario(funcionario.Codigo))
-            {
-                FuncionarioDAL.createFuncionario(funcionario);
-            }
-            else
-            {
+                FuncionarioDAL.createFuncionario(funcionario);        
+            else          
                 FuncionarioDAL.updateFuncionario(funcionario);
-            }
         }
         public static void getLast()
         {

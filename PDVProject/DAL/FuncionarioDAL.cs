@@ -19,7 +19,7 @@ namespace DAL
             {
                 try
                 {
-                    const string sqlQuery = "INSERT INTO Cliente(id, ide, nome, funcao, comissao, dataCriacao,dataAlteracao, status) " +
+                    const string sqlQuery = "INSERT INTO Funcionarios(id, ide, nome, funcao, comissao, dataCriacao,dataAlteracao, status) " +
                                             "VALUES(@Id ,@Ide, @Nome, @Funcao, @Comissao, getdate(),getdate(), @Status)";
 
                     SqlCommand cmd = new SqlCommand(sqlQuery, conec);//passa a query e passa a instancia da conexao 
