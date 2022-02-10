@@ -20,13 +20,7 @@ namespace PDVProject.UI
             InitializeComponent();
             //  
             dataGridFuncionarios.DataSource = FuncionarioBLL.getDataTable();
-            dataGridFuncionarios.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridFuncionarios.Columns[0].Width = 70;
-            dataGridFuncionarios.Columns[1].Width = 180;
-            dataGridFuncionarios.Columns[3].Width = 230;
-            dataGridFuncionarios.Columns[4].Width = 110;
-            dataGridFuncionarios.Columns[5].Width = 200;
-            dataGridFuncionarios.Columns[6].Width = 120;
+            configurarGrid();
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
@@ -36,7 +30,13 @@ namespace PDVProject.UI
         }
         private void btn_editar_Click(object sender, EventArgs e)
         {
-            getFuncLinha();
+            Funcionario funcionario = FuncionarioBLL.getFunc(linhaAtual);
+            startEdicao(funcionario);
+            txtConsultaFunc.Text = "";
+        }
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            dataGridFuncionarios.DataSource = FuncionarioBLL.getDataTable();
         }
         //------------------
         public int getLinha(DataGridViewCellMouseEventArgs e)
@@ -61,7 +61,43 @@ namespace PDVProject.UI
             CadastroFuncionario cadastroFuncionario = new CadastroFuncionario(func.Codigo,func.Nome,func.Comissao,func.Funcao);
             cadastroFuncionario.Show();
         }
+        private void startEdicao(Funcionario funcionario)
+        {
+            CadastroFuncionario cadastroFuncionario = new CadastroFuncionario(funcionario.Codigo, funcionario.Nome, funcionario.Comissao, funcionario.Funcao);
+            cadastroFuncionario.Show();
+        }
+        public void configurarGrid()
+        {
+            dataGridFuncionarios.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridFuncionarios.Columns[0].Width = 70;
+            dataGridFuncionarios.Columns[1].Width = 230;
+            dataGridFuncionarios.Columns[2].Width = 200;
+            dataGridFuncionarios.Columns[3].Width = 100;
+            dataGridFuncionarios.Columns[4].Width = 60;
+            dataGridFuncionarios.Columns[5].Width = 130;
+            dataGridFuncionarios.Columns[6].Width = 130;
+            dataGridFuncionarios.Columns[7].Width = 80;
+        }
 
+        private void btn_excluir_Click(object sender, EventArgs e)
+        {
+            Funcionario funcionario = FuncionarioBLL.getFunc(linhaAtual);
+            FuncionarioBLL.deleteFunc(funcionario.Codigo);
+            btnAtualizar_Click(sender, e);
+        }
 
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            string txt = txtConsultaFunc.Text;
+            if (txt.Trim() == "")
+            {
+                dataGridFuncionarios.DataSource = FuncionarioBLL.getDataTable();
+                dataGridFuncionarios.Text = "";
+            }
+            else
+                dataGridFuncionarios.DataSource = FuncionarioBLL.consultaNome(txtConsultaFunc.Text);
+            configurarGrid();
+
+        }
     }
 }

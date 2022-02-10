@@ -56,6 +56,7 @@ namespace DAL
                     SqlCommand cmd = new SqlCommand(sqlQuery, conec);
                     cmd.Parameters.AddWithValue("@Codigo", func.Codigo);
                     cmd.Parameters.AddWithValue("@Nome", func.Nome);
+                    cmd.Parameters.AddWithValue("@Funcao", func.Funcao);
                     cmd.Parameters.AddWithValue("@Comissao", func.Comissao);
 
                     conec.Open();
@@ -170,9 +171,9 @@ namespace DAL
             {
                 try
                 {
-                    string sqlQuery = $"SELECT id as Codigo, Ide,nome as Nome, sobrenome as Sobrenome, cpf as CPF, " +
-                        $"email as 'E-mail', dataAlteracao as 'Data alteração', dataCriacao as 'Data Criação' from Cliente " +
-                        $"where nome LIKE '%{valor}%' OR sobrenome LIKE '%{valor}%' or email LIKE '%{valor}%' and Status = 0";
+                    string sqlQuery = $"SELECT id as Codigo, Ide,nome as Nome, funcao as Função, comissao as Comissão, " +
+                        $"dataAlteracao as 'Data alteração', dataCriacao as 'Data Criação', status as Status from Funcionarios " +
+                        $"where nome LIKE '%{valor}%' OR ide LIKE '%{valor}%' or funcao LIKE '%{valor}%' and Status = 0";
                     conec.Open();
                     using (SqlDataAdapter da = new SqlDataAdapter(sqlQuery, conec))
                     //Representa um conjunto de comandos SQL e uma conexão de banco de dados

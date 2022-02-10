@@ -19,6 +19,7 @@ namespace PDVProject.UI
         {
             InitializeComponent();
             createArrayButtons();
+            lbFuncionario.Text = "";
         }
         public CadastroFuncionario(int codigo, string nome, decimal comissao, string funcao)
         {
@@ -27,6 +28,7 @@ namespace PDVProject.UI
             txtCodigo.Text = codigo.ToString();
             txtComissao.Text = comissao.ToString();
             txtNome.Text = nome.ToString();
+            lbFuncionario.Text = "";
             checkRadioButton(funcao);
         }
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -42,10 +44,7 @@ namespace PDVProject.UI
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            clear();
-        }
+        private void button3_Click(object sender, EventArgs e) => clear();
         private void btnSalvarContinuar_Click(object sender, EventArgs e)
         {
             try
@@ -64,10 +63,7 @@ namespace PDVProject.UI
         }
         //-----------------------
 
-        public void createArrayButtons()
-        {
-            arrayButtons = new RadioButton[5] { rbCaixa, rbEntregador, rbGerente, rbTecnico, rbVendedor };
-        }
+        public void createArrayButtons() => arrayButtons = new RadioButton[5] { rbCaixa, rbEntregador, rbGerente, rbTecnico, rbVendedor };    
         public void salvarCadastro()
         {
             Funcionario funcionario = null;
@@ -77,10 +73,8 @@ namespace PDVProject.UI
                 funcionario = new Funcionario();
             }
             else
-            {
                 funcionario = new Funcionario(Int32.Parse(txtCodigo.Text));
-            }
-            
+          
             funcionario.Nome = txtNome.Text;
             funcionario.Funcao = getValueButton();
             funcionario.Comissao = Decimal.Parse(txtComissao.Text); 
