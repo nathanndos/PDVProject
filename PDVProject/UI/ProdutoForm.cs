@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BLL;
 
 namespace PDVProject.UI
 {
@@ -15,7 +16,7 @@ namespace PDVProject.UI
         public ProdutoForm()
         {
             InitializeComponent();
-            //dataGridProduto.DataSource = ProdutoBLL.getDataTable();
+            dataGridProduto.DataSource = ProdutoBLL.getListAll();
             //dataGridProduto.Columns[0].Width = 70;
             //dataGridProduto.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             //dataGridProduto.Columns[1].Width = 180;

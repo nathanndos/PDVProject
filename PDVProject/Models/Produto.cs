@@ -8,10 +8,10 @@ namespace Entity
 {
     public class Produto:ClasseBase
     {
-        public static int Id { get; private set; }
-        public float Preco { get; set; }
-        public int Ncm { get; set; }    
-        public int CodigoFornecedor { get; set; }
+        public static int Id { private get; set; }
+        public decimal Preco { get; set; }
+        public string Ncm { get; set; }    
+        public string CodigoFornecedor { get; set; }
         public Produto(){
             Id++;
             Codigo = Id;
