@@ -67,6 +67,7 @@ namespace PDVProject.UI
             this.btn_editarProd.TabIndex = 12;
             this.btn_editarProd.Text = "Editar";
             this.btn_editarProd.UseVisualStyleBackColor = true;
+            this.btn_editarProd.Click += new System.EventHandler(this.btn_editarProd_Click);
             // 
             // btnCadastrarProd
             // 
@@ -80,12 +81,28 @@ namespace PDVProject.UI
             // 
             // dataGridProduto
             // 
+            this.dataGridProduto.AllowDrop = true;
+            this.dataGridProduto.AllowUserToAddRows = false;
+            this.dataGridProduto.AllowUserToDeleteRows = false;
+            this.dataGridProduto.AllowUserToOrderColumns = true;
+            this.dataGridProduto.AllowUserToResizeColumns = false;
+            this.dataGridProduto.AllowUserToResizeRows = false;
             this.dataGridProduto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridProduto.EnableHeadersVisualStyles = false;
             this.dataGridProduto.Location = new System.Drawing.Point(57, 209);
+            this.dataGridProduto.MultiSelect = false;
             this.dataGridProduto.Name = "dataGridProduto";
             this.dataGridProduto.RowTemplate.Height = 25;
+            this.dataGridProduto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridProduto.ShowCellErrors = false;
+            this.dataGridProduto.ShowCellToolTips = false;
+            this.dataGridProduto.ShowEditingIcon = false;
+            this.dataGridProduto.ShowRowErrors = false;
             this.dataGridProduto.Size = new System.Drawing.Size(1007, 392);
             this.dataGridProduto.TabIndex = 14;
+            this.dataGridProduto.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridProduto_CellContentClick);
+            this.dataGridProduto.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridUmClique);
+            this.dataGridProduto.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridDoisCliques);
             // 
             // textBox1
             // 
@@ -111,6 +128,7 @@ namespace PDVProject.UI
             this.btn_Atualizar.TabIndex = 17;
             this.btn_Atualizar.Text = "Atualizar";
             this.btn_Atualizar.UseVisualStyleBackColor = true;
+            this.btn_Atualizar.Click += new System.EventHandler(this.btn_Atualizar_Click);
             // 
             // ProdutoForm
             // 

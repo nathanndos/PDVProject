@@ -19,7 +19,7 @@ namespace PDVProject.UI
         {
             InitializeComponent();
             //  
-            dataGridFuncionarios.DataSource = FuncionarioBLL.getDataTable();
+            dataGridFuncionarios.DataSource = FuncionarioBLL.getListAll();
             configurarGrid();
         }
 
@@ -30,14 +30,11 @@ namespace PDVProject.UI
         }
         private void btn_editar_Click(object sender, EventArgs e)
         {
-            Funcionario funcionario = FuncionarioBLL.getFunc(linhaAtual);
+            Funcionario funcionario = FuncionarioBLL.getData(linhaAtual);
             startEdicao(funcionario);
             txtConsultaFunc.Text = "";
         }
-        private void btnAtualizar_Click(object sender, EventArgs e)
-        {
-            dataGridFuncionarios.DataSource = FuncionarioBLL.getDataTable();
-        }
+        private void btnAtualizar_Click(object sender, EventArgs e) => dataGridFuncionarios.DataSource = FuncionarioBLL.getListAll();
         //------------------
         public int getLinha(DataGridViewCellMouseEventArgs e)
         {
@@ -46,14 +43,12 @@ namespace PDVProject.UI
         }
         public Funcionario getFuncLinha(DataGridViewCellMouseEventArgs e)
         {
-            Funcionario cliente = FuncionarioBLL.getFunc(getLinha(e));
+            Funcionario cliente = FuncionarioBLL.getData(getLinha(e));
             return cliente;
         }
 
-        private void dataGridFuncionarios_UmClique(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            getLinha(e);
-        }
+        private void dataGridFuncionarios_UmClique(object sender, DataGridViewCellMouseEventArgs e) => getLinha(e);
+
 
         private void dataGridFuncionarios_DoisCliques(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -81,8 +76,8 @@ namespace PDVProject.UI
 
         private void btn_excluir_Click(object sender, EventArgs e)
         {
-            Funcionario funcionario = FuncionarioBLL.getFunc(linhaAtual);
-            FuncionarioBLL.deleteFunc(funcionario.Codigo);
+            Funcionario funcionario = FuncionarioBLL.getData(linhaAtual);
+            FuncionarioBLL.delete(funcionario.Codigo);
             btnAtualizar_Click(sender, e);
         }
 
@@ -91,11 +86,11 @@ namespace PDVProject.UI
             string txt = txtConsultaFunc.Text;
             if (txt.Trim() == "")
             {
-                dataGridFuncionarios.DataSource = FuncionarioBLL.getDataTable();
+                dataGridFuncionarios.DataSource = FuncionarioBLL.getListAll();
                 dataGridFuncionarios.Text = "";
             }
             else
-                dataGridFuncionarios.DataSource = FuncionarioBLL.consultaNome(txtConsultaFunc.Text);
+                dataGridFuncionarios.DataSource = FuncionarioBLL.searchByName(txtConsultaFunc.Text);
             configurarGrid();
 
         }

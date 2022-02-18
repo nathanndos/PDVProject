@@ -13,34 +13,34 @@ namespace BLL
     {
         public static void save(Funcionario funcionario)
         {
-            if (FuncionarioDAL.findFuncionario(funcionario.Codigo))
-                FuncionarioDAL.createFuncionario(funcionario);        
+            if (FuncionarioDAL.find(funcionario.Codigo))
+                FuncionarioDAL.create(funcionario);        
             else          
-                FuncionarioDAL.updateFuncionario(funcionario);
+                FuncionarioDAL.update(funcionario);
         }
         public static void getLast()
         {
             Funcionario.Id = FuncionarioDAL.getLastId();
         }
-        public static DataTable getDataTable()
+        public static DataTable getListAll()
         {
-            return FuncionarioDAL.getData();
+            return FuncionarioDAL.getAll();
         }
-        public static DataTable consultaNome(string name)
+        public static DataTable searchByName(string name)
         {
-            return FuncionarioDAL.consultFuncionario(name);
+            return FuncionarioDAL.getByName(name);
         }
-        public static Funcionario getFunc(int codigo)
+        public static Funcionario getData(int codigo)
         {
             return FuncionarioDAL.get(codigo);
         }
-        public static void deleteFunc(int codigo)
+        public static void delete(int codigo)
         {
             FuncionarioDAL.delete(codigo);
         }
-        public static DataTable getFuncCodigo(int codigo)
+        public static DataTable searchById(int codigo)
         {
-            return FuncionarioDAL.consultCodigo(codigo);
+            return FuncionarioDAL.getById(codigo);
         }
     }
 }

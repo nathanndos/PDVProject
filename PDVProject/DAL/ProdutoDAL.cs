@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Entity;
 using System.Data.SqlClient;
 using System.Data;
+using Utility;
 
 namespace DAL
 {
@@ -14,8 +15,8 @@ namespace DAL
         public static void create(Produto produto)
         {
             //Maneira atual, visto que as informações do banco vem do ArdId
-            string textConexao = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
-            using (SqlConnection conec = new SqlConnection(textConexao))
+            string textConnection = Common.get();
+            using (SqlConnection conec = new SqlConnection(textConnection))
             {
                 try
                 {
@@ -46,8 +47,8 @@ namespace DAL
         }
         public static void update(Produto produto)
         {
-            string textConexao = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
-            using (SqlConnection conec = new SqlConnection(textConexao))
+            string textConnection = Common.get();
+            using (SqlConnection conec = new SqlConnection(textConnection))
             {
                 try
                 {
@@ -76,9 +77,9 @@ namespace DAL
         }
         public static bool find(int codigo)
         {
-            string textConexao = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
+            string textConnection = Common.get();
             bool logic = false;
-            using (SqlConnection conec = new SqlConnection(textConexao))
+            using (SqlConnection conec = new SqlConnection(textConnection))
             {
                 try
                 {
@@ -109,9 +110,9 @@ namespace DAL
         }
         public static int getLastId()
         {
-            string textConexao = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
+            string textConnection = Common.get();
             int last;
-            using (SqlConnection conec = new SqlConnection(textConexao))
+            using (SqlConnection conec = new SqlConnection(textConnection))
             {
                 try
                 {
@@ -135,7 +136,7 @@ namespace DAL
         }
         public static DataTable getAll()
         {
-            string textConnection = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
+            string textConnection = Common.get();
             using (SqlConnection conec = new SqlConnection(textConnection))
             {
                 try
@@ -165,7 +166,7 @@ namespace DAL
         } //Busca todos os dados
         public static DataTable getByName(string valor)
         {
-            string textConnection = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
+            string textConnection = Common.get();
             using (SqlConnection conec = new SqlConnection(textConnection))
             {
                 try
@@ -192,7 +193,7 @@ namespace DAL
         }//Consulta por nome
         public static DataTable getById(int valor)
         {
-            string textConnection = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
+            string textConnection = Common.get();
             using (SqlConnection conec = new SqlConnection(textConnection))
             {
                 try
@@ -222,7 +223,7 @@ namespace DAL
         }//Consulta por codigo
         public static Produto get(int codigo)
         {
-            string textConnection = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
+            string textConnection = Common.get();
             Produto produto = new Produto();
             SqlDataReader dr = null;
 
@@ -258,8 +259,8 @@ namespace DAL
         }
         public static void delete(int codigo)
         {
-            string textConexao = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
-            using (SqlConnection conec = new SqlConnection(textConexao))
+            string textConnection = Common.get();
+            using (SqlConnection conec = new SqlConnection(textConnection))
             {
                 try
                 {

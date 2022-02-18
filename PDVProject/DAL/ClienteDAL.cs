@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using Entity;
+using Utility;
 
 namespace DAL
 {
     public class ClienteDAL//Acesso ao banco de Dados
     {
-        public static void createClient(Cliente cliente){
+        public static void create(Cliente cliente){
             //Maneira atual, visto que as informações do banco vem do ArdId
-            string textConexao = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
-            using (SqlConnection conec = new SqlConnection(textConexao) ) {
+            string textConnection = Common.get();
+            using (SqlConnection conec = new SqlConnection(textConnection) ) {
                 try{
                     const string sqlQuery = "INSERT INTO Cliente(id, ide, nome,sobrenome, cpf, email, dataCriacao,dataAlteracao, Status) " +
                                             "VALUES(@Id_cliente,@Ide, @Nome, @Sobrenome, @CPF, @Email, getdate(),getdate(), @Status)";
@@ -41,10 +42,10 @@ namespace DAL
                 }         
             }
         }
-        public static void updateClient(Cliente cliente)
+        public static void update(Cliente cliente)
         {
-            string textConexao = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
-            using (SqlConnection conec = new SqlConnection(textConexao)){
+            string textConnection = Common.get();
+            using (SqlConnection conec = new SqlConnection(textConnection)){
                 try{
                     const string sqlQuery = @"UPDATE Cliente " +
                                             "SET Nome = @Nome, Sobrenome = @Sobrenome,Email = @Email, Cpf = @Cpf, dataAlteracao = getdate() "+
@@ -69,11 +70,11 @@ namespace DAL
                 }
             }
         }
-        public static bool findClient(int codigo)
+        public static bool find(int codigo)
         {
-            string textConexao = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
+            string textConnection = Common.get();
             bool logic = false;
-            using (SqlConnection conec = new SqlConnection(textConexao)){
+            using (SqlConnection conec = new SqlConnection(textConnection)){
                 try{
                     const string sqlQuery = "SELECT COUNT(id) FROM Cliente WHERE id = @codigo and status = 0";
                     SqlCommand cmd = new SqlCommand(sqlQuery, conec);
@@ -102,9 +103,9 @@ namespace DAL
         }
         public static int getLastId()
         {
-            string textConexao = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
+            string textConnection = Common.get();
             int last;
-            using (SqlConnection conec = new SqlConnection(textConexao)){
+            using (SqlConnection conec = new SqlConnection(textConnection)){
                 try{
                     const string sqlQuery = "SELECT MAX(id) FROM cliente";
                     SqlCommand cmd = new SqlCommand(sqlQuery, conec);
@@ -124,9 +125,9 @@ namespace DAL
             }
             return last;
         }
-        public static DataTable getData()
+        public static DataTable getAll()
         {
-            string textConnection = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
+            string textConnection = Common.get();
             using (SqlConnection conec = new SqlConnection(textConnection)){
                 try{
                     const string sqlQuery = "SELECT id as Codigo, Ide,nome as Nome, sobrenome as Sobrenome, cpf as CPF, " +
@@ -151,9 +152,9 @@ namespace DAL
                 }
             }
         } //Busca todos os dados
-        public static DataTable consultClient(string valor)
+        public static DataTable getByName(string valor)
         {
-            string textConnection = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
+            string textConnection = Common.get();
             using (SqlConnection conec = new SqlConnection(textConnection)){
                 try{
                     string sqlQuery = $"SELECT id as Codigo, Ide,nome as Nome, sobrenome as Sobrenome, cpf as CPF, " +
@@ -175,9 +176,9 @@ namespace DAL
                 finally{ conec.Close(); }
             }
         }//Consulta por nome
-        public static DataTable consultCodigo(int valor)
+        public static DataTable getById(int valor)
         {
-            string textConnection = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
+            string textConnection = Common.get();
             using (SqlConnection conec = new SqlConnection(textConnection)){
                 try{
                     string sqlQuery = $"SELECT id as Codigo, Ide,nome as Nome, sobrenome as Sobrenome, cpf as CPF, " +
@@ -205,7 +206,7 @@ namespace DAL
         }//Consulta por codigo
         public static Cliente get(int codigo)
         {
-            string textConnection = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
+            string textConnection = Common.get();
             Cliente cliente = new Cliente();
             SqlDataReader dr = null;
 
@@ -242,8 +243,8 @@ namespace DAL
         }
         public static void delete(int codigo)
         {
-            string textConexao = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
-            using (SqlConnection conec = new SqlConnection(textConexao))
+            string textConnection = Common.get();
+            using (SqlConnection conec = new SqlConnection(textConnection))
             {
                 try
                 {

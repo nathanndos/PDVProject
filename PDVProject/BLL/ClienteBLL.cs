@@ -14,39 +14,39 @@ namespace BLL
     {
        public static void save(Cliente cliente)
         { 
-            if (ClienteDAL.findClient(cliente.Codigo))
+            if (ClienteDAL.find(cliente.Codigo))
             {
-                ClienteDAL.createClient(cliente);
+                ClienteDAL.create(cliente);
             }
             else
             {
-                ClienteDAL.updateClient(cliente);
+                ClienteDAL.update(cliente);
             }
         }public static void getLast()
         {
            Cliente.Id = ClienteDAL.getLastId();
         }
-        public static DataTable getDataTable()
+        public static DataTable getListAll()
         {
-            return ClienteDAL.getData();
+            return ClienteDAL.getAll();
         }
-        public static DataTable consultaNome(string name)
+        public static DataTable searchByName(string name)
         {
-                return ClienteDAL.consultClient(name);    
+                return ClienteDAL.getByName(name);    
             //return ClienteDAL.consultCodigo(int.Parse(name));
         }
-        public static Cliente getClient(int codigo)
+        public static Cliente getData(int codigo)
         {
             return ClienteDAL.get(codigo);
         }
 
-        public static void deleteClient(int codigo)
+        public static void delete(int codigo)
         {
             ClienteDAL.delete(codigo); 
         }
-       public static DataTable getClienteCodigo(int codigo)
+       public static DataTable searchByCodigo(int codigo)
         {
-            return ClienteDAL.consultCodigo(codigo);
+            return ClienteDAL.getById(codigo);
         }
     }
 }

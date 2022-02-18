@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 using Entity;
 using System.Data.SqlClient;
 using System.Data;
+using Utility;
 
 namespace DAL
 {
     public class FuncionarioDAL
     {
-        public static void createFuncionario(Funcionario func)
+        public static void create(Funcionario func)
         {
             //Maneira atual, visto que as informações do banco vem do ArdId
-            string textConexao = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
-            using (SqlConnection conec = new SqlConnection(textConexao))
+            string textConnection = Common.get();
+            using (SqlConnection conec = new SqlConnection(textConnection))
             {
                 try
                 {
@@ -43,10 +44,10 @@ namespace DAL
                 }
             }
         }
-        public static void updateFuncionario(Funcionario func)
+        public static void update(Funcionario func)
         {
-            string textConexao = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
-            using (SqlConnection conec = new SqlConnection(textConexao))
+            string textConnection = Common.get();
+            using (SqlConnection conec = new SqlConnection(textConnection))
             {
                 try
                 {
@@ -72,11 +73,11 @@ namespace DAL
                 }
             }
         }
-        public static bool findFuncionario(int codigo)
+        public static bool find(int codigo)
         {
-            string textConexao = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
+            string textConnection = Common.get();
             bool logic = false;
-            using (SqlConnection conec = new SqlConnection(textConexao))
+            using (SqlConnection conec = new SqlConnection(textConnection))
             {
                 try
                 {
@@ -111,9 +112,9 @@ namespace DAL
         }
         public static int getLastId()
         {
-            string textConexao = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
+            string textConnection = Common.get();
             int last;
-            using (SqlConnection conec = new SqlConnection(textConexao))
+            using (SqlConnection conec = new SqlConnection(textConnection))
             {
                 try
                 {
@@ -135,9 +136,9 @@ namespace DAL
             }
             return last;
         }
-        public static DataTable getData()
+        public static DataTable getAll()
         {
-            string textConnection = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
+            string textConnection = Common.get();
             using (SqlConnection conec = new SqlConnection(textConnection))
             {
                 try
@@ -164,9 +165,9 @@ namespace DAL
                 }
             }
         } //Busca todos os dados
-        public static DataTable consultFuncionario(string valor)
+        public static DataTable getByName(string valor)
         {
-            string textConnection = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
+            string textConnection = Common.get();
             using (SqlConnection conec = new SqlConnection(textConnection))
             {
                 try
@@ -191,9 +192,9 @@ namespace DAL
                 finally { conec.Close(); }
             }
         }//Consulta por nome
-        public static DataTable consultCodigo(int valor)
+        public static DataTable getById(int valor)
         {
-            string textConnection = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
+            string textConnection = Common.get();
             using (SqlConnection conec = new SqlConnection(textConnection))
             {
                 try
@@ -223,7 +224,7 @@ namespace DAL
         }//Consulta por codigo
         public static Funcionario get(int codigo)
         {
-            string textConnection = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
+            string textConnection = Common.get();
             Funcionario funcionario = new Funcionario();
             SqlDataReader dr = null;
 
@@ -259,8 +260,8 @@ namespace DAL
         }
         public static void delete(int codigo)
         {
-            string textConexao = @"Data Source=YMCA-AULTSTRING\SQL2014;Initial Catalog=fakeetrade;User ID=sa;Password=senha";
-            using (SqlConnection conec = new SqlConnection(textConexao))
+            string textConnection = Common.get();
+            using (SqlConnection conec = new SqlConnection(textConnection))
             {
                 try
                 {

@@ -19,7 +19,7 @@ namespace PDVProject
         public ClienteForm()
         {
             InitializeComponent();
-            dataGridCliente.DataSource = ClienteBLL.getDataTable();
+            dataGridCliente.DataSource = ClienteBLL.getListAll();
             dataGridCliente.Columns[0].Width = 70;
             dataGridCliente.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridCliente.Columns[1].Width = 180;
@@ -71,13 +71,10 @@ namespace PDVProject
         {
         }
 
-        private void btnAtualizar_Click(object sender, EventArgs e)
-        {
-            dataGridCliente.DataSource = ClienteBLL.getDataTable();
-        }
+        private void btnAtualizar_Click(object sender, EventArgs e) => dataGridCliente.DataSource = ClienteBLL.getListAll();
         private void btn_editar_Click(object sender, EventArgs e)
         {
-            Cliente cliente = ClienteBLL.getClient(linhaAtual);
+            Cliente cliente = ClienteBLL.getData(linhaAtual);
             startEdicao(cliente);
         }
 
@@ -88,25 +85,25 @@ namespace PDVProject
             string txt = txtBuscarCliente.Text;
             if (txt.Trim() == "")
             {
-                dataGridCliente.DataSource = ClienteBLL.getDataTable();
+                dataGridCliente.DataSource = ClienteBLL.getListAll();
                 txtBuscarCliente.Text = "";
             }
             else
             {
                 try
                 {
-                    dataGridCliente.DataSource = ClienteBLL.getClienteCodigo(Convert.ToInt32(txt));
+                    dataGridCliente.DataSource = ClienteBLL.searchByCodigo(Convert.ToInt32(txt));
                 }
                 catch
                 {
-                    dataGridCliente.DataSource = ClienteBLL.consultaNome(txtBuscarCliente.Text);
+                    dataGridCliente.DataSource = ClienteBLL.searchByName(txtBuscarCliente.Text);
                 }
             }
         }
         private void btn_excluir_Click(object sender, EventArgs e)
         {
-            Cliente cliente = ClienteBLL.getClient(linhaAtual);
-            ClienteBLL.deleteClient(cliente.Codigo);
+            Cliente cliente = ClienteBLL.getData(linhaAtual);
+            ClienteBLL.delete(cliente.Codigo);
             btnAtualizar_Click(sender, e);
         }
         private void focoBuscaCliente(object sender, EventArgs e)
@@ -116,7 +113,7 @@ namespace PDVProject
         {
             if (e.KeyValue == (char)Keys.Enter)
             {
-                dataGridCliente.DataSource = ClienteBLL.getDataTable();
+                dataGridCliente.DataSource = ClienteBLL.getListAll();
             }
         }
         public int getLinha(DataGridViewCellMouseEventArgs e)
@@ -126,7 +123,7 @@ namespace PDVProject
         }
         public Cliente getClienteLinha(DataGridViewCellMouseEventArgs e)
         {
-            Cliente cliente = ClienteBLL.getClient(getLinha(e));
+            Cliente cliente = ClienteBLL.getData(getLinha(e));
             return cliente;
         }
         private void startEdicao(Cliente cliente)

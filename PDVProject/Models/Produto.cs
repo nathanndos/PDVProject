@@ -17,5 +17,6 @@ namespace Entity
             Codigo = Id;
             Ide = new string(ChaveAleatoria());
         }
+        public Produto(int codigo) => Codigo = codigo;
     }
 }
