@@ -233,13 +233,13 @@ namespace DAL
             {
                 try
                 {
-                    const string sqlQuery = @"Select m.ID, m.TotalDesconto, m.TotalFinal,convert(date,m.DataCriacao) , m.Status, m.Funcionario__Id, m.Cliente__id, c.nome" +
+                    const string sqlQuery = @"Select m.ID, m.TotalDesconto, m.TotalFinal, m.Funcionario__Id, m.Cliente__id, c.nome" +
                                             @"from movimento m"+
                                             @"inner join Cliente c on c.id = m.Cliente__id"+
                                             @"inner join Funcionarios f on f.Id = m.Funcionario__Id"+
                                             @"where id = @codigo or ide = @ide";
                     SqlCommand cmd = new SqlCommand(sqlQuery, conec);
-
+                    //convert(date,m.DataCriacao) ,
                     cmd.Parameters.AddWithValue("@Codigo", codigo);
                     conec.Open();
                     dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
@@ -248,7 +248,7 @@ namespace DAL
                         movimento.Codigo = (int)dr[0];
                         movimento.TotalDesconto = (decimal)dr[1];
                         movimento.TotalFinal = (decimal)dr[2];
-                        movimento.Email = dr[3].ToString();
+                        movimento.funcionario__Id = dr[3].ToString();
                         movimento.Cpf = dr[4].ToString();
                     }
                 }
