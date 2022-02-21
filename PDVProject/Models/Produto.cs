@@ -9,6 +9,7 @@ namespace Entity
     public class Produto:ClasseBase
     {
         public static int Id { private get; set; }
+        public string Nome { get; set; }
         public decimal Preco { get; set; }
         public string Ncm { get; set; }    
         public string CodigoFornecedor { get; set; }

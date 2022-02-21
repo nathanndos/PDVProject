@@ -9,7 +9,6 @@ namespace Entity
     public abstract class ClasseBase
     {
         public int Codigo { get;set; }
-        public string Nome { get; set; }
         public string Ide { get; set; } 
         public int Status { get; set; } 
 

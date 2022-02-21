@@ -8,7 +8,8 @@ namespace Entity
 {
     public class Funcionario:ClasseBase
     {
-        public static int Id { private get;  set; }  
+        public static int Id { private get;  set; }
+        public string Nome { get; set; }
         public decimal Comissao { get;set; }  
         public string Funcao { get; set; }  
 

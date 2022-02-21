@@ -40,17 +40,17 @@ namespace PDVProject.UI
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+       /* private void button2_Click(object sender, EventArgs e)
         {
             lb_caixa.Text = "CAIXA ABERTO";
-            button2.Text = "Iniciar Venda";
+            btnVenda.Text = "Iniciar Venda";
             btn_finalizar.Text = "Fechar Caixa";
-        }
+        }*/
 
         private void btn_finalizar_Click(object sender, EventArgs e)
         {
             lb_caixa.Text = "CAIXA FECHADO";
-            button2.Text = "Iniciar Caixa";
+            btnVenda.Text = "Iniciar Caixa";
             btn_finalizar.Text = "Finalizar";
         }
 
@@ -58,6 +58,12 @@ namespace PDVProject.UI
         {
             FuncionarioForm funcionarioForm = new FuncionarioForm();    
             funcionarioForm.Show();
+        }
+
+        private void btnVenda_Click(object sender, EventArgs e)
+        {
+            MovimentoForm movimento = new MovimentoForm();
+            movimento.Show();
         }
     }
 }
