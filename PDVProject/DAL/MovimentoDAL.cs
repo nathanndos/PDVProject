@@ -166,34 +166,7 @@ namespace DAL
                     conec.Close();
                 }
             }
-        } //Busca todos os dados
-        public static DataTable getByName(string valor)
-        {
-            string textConnection = Common.get();
-            using (SqlConnection conec = new SqlConnection(textConnection))
-            {
-                try
-                {
-                    string sqlQuery = $"SELECT id as Codigo, Ide,nome as Nome, sobrenome as Sobrenome, cpf as CPF, " +
-                        $"email as 'E-mail', dataAlteracao as 'Data alteração', dataCriacao as 'Data Criação' from Movimento " +
-                        $"where nome LIKE '%{valor}%' OR sobrenome LIKE '%{valor}%' or email LIKE '%{valor}%' and Status = 0";
-                    conec.Open();
-                    using (SqlDataAdapter da = new SqlDataAdapter(sqlQuery, conec))
-                    //Representa um conjunto de comandos SQL e uma conexão de banco de dados
-                    //serve pra preencher dataset
-                    {
-                        using (DataTable dt = new DataTable())
-                        {
-                            //representa uma tabela de dados
-                            da.Fill(dt);
-                            return dt;
-                        }
-                    }
-                }
-                catch { throw; }
-                finally { conec.Close(); }
-            }
-        }//Consulta por nome
+        } //Busca todos os dados       
         public static DataTable getById(int valor)
         {
             string textConnection = Common.get();
@@ -233,7 +206,7 @@ namespace DAL
             {
                 try
                 {
-                    const string sqlQuery = @"Select m.ID, m.TotalDesconto, m.TotalFinal, m.Funcionario__Id, m.Cliente__id, c.nome" +
+                    const string sqlQuery = @"Select m.ID, m.TotalDesconto, m.TotalFinal, m.Funcionario__Id,f.Nome, m.Cliente__id, c.nome" +
                                             @"from movimento m"+
                                             @"inner join Cliente c on c.id = m.Cliente__id"+
                                             @"inner join Funcionarios f on f.Id = m.Funcionario__Id"+
@@ -248,8 +221,10 @@ namespace DAL
                         movimento.Codigo = (int)dr[0];
                         movimento.TotalDesconto = (decimal)dr[1];
                         movimento.TotalFinal = (decimal)dr[2];
-                        movimento.funcionario__Id = dr[3].ToString();
-                        movimento.Cpf = dr[4].ToString();
+                        movimento.funcionario__Id = (int)dr[3];
+                        movimento.funcionario_Nome = dr[4].ToString();
+                        movimento.cliente__Id = (int)dr[5];
+                        movimento.cliente_Nome = dr[5].ToString();
                     }
                 }
                 catch

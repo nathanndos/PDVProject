@@ -19,9 +19,6 @@ namespace Entity
             Codigo = Id;
             Ide = new string(ChaveAleatoria());
         }
-        public Funcionario(int codigo)
-        {
-            Codigo = codigo;   
-        }
+        public Funcionario(int codigo) => Codigo = codigo;   
     }
 }
