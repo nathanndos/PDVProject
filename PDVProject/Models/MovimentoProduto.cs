@@ -9,11 +9,13 @@ namespace Entity
     public class MovimentoProduto:ClasseBase
     {
         public static int Id { private get; set; }
+        public int Quantidade { get; set; }
         public decimal TotalFinal { get; set; }
         public decimal TotalOriginal { get; set; }
         #region Foreign Key
         public int movimento__id { get; set; }
         public int funcionario__id { get; set; }
+        public int produto__id { get; set; }
         #endregion
         public string ProdutoNome { get; set; }
         public string FuncionarioNome { get; set; }
@@ -28,5 +30,12 @@ namespace Entity
 
         }
         public MovimentoProduto(int codigo) => Codigo = codigo;
+
+        public MovimentoProduto(string produtoNome,int quantidade, decimal precoUnitario)
+        {
+            ProdutoNome = produtoNome;
+            Quantidade = quantidade;
+            TotalFinal = precoUnitario * quantidade;
+        }
     }
 }

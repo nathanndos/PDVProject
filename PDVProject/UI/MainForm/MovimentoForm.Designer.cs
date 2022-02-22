@@ -41,10 +41,10 @@
             this.disableVendedor = new System.Windows.Forms.TextBox();
             this.txtQtd = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.disableProduto = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.txtPrecoProduto = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dgProdutosVenda = new System.Windows.Forms.DataGridView();
@@ -169,24 +169,24 @@
             this.label5.TabIndex = 17;
             this.label5.Text = "Qtd:";
             // 
-            // textBox9
+            // disableProduto
             // 
-            this.textBox9.Enabled = false;
-            this.textBox9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox9.Location = new System.Drawing.Point(18, 84);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(848, 29);
-            this.textBox9.TabIndex = 18;
-            this.textBox9.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
+            this.disableProduto.Enabled = false;
+            this.disableProduto.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.disableProduto.Location = new System.Drawing.Point(18, 84);
+            this.disableProduto.Name = "disableProduto";
+            this.disableProduto.Size = new System.Drawing.Size(848, 29);
+            this.disableProduto.TabIndex = 18;
+            this.disableProduto.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.textBox11);
+            this.groupBox1.Controls.Add(this.txtPrecoProduto);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.dgProdutosVenda);
-            this.groupBox1.Controls.Add(this.textBox9);
+            this.groupBox1.Controls.Add(this.disableProduto);
             this.groupBox1.Controls.Add(this.txtCodProduto);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
@@ -207,12 +207,12 @@
             this.label7.TabIndex = 23;
             this.label7.Text = "Preço Unitário:";
             // 
-            // textBox11
+            // txtPrecoProduto
             // 
-            this.textBox11.Location = new System.Drawing.Point(252, 55);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(100, 23);
-            this.textBox11.TabIndex = 5;
+            this.txtPrecoProduto.Location = new System.Drawing.Point(252, 55);
+            this.txtPrecoProduto.Name = "txtPrecoProduto";
+            this.txtPrecoProduto.Size = new System.Drawing.Size(100, 23);
+            this.txtPrecoProduto.TabIndex = 5;
             // 
             // button2
             // 
@@ -231,6 +231,7 @@
             this.button1.TabIndex = 6;
             this.button1.Text = "Lançar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // dgProdutosVenda
             // 
@@ -346,7 +347,7 @@
         private System.Windows.Forms.TextBox disableVendedor;
         private System.Windows.Forms.TextBox txtQtd;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox disableProduto;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgProdutosVenda;
         private System.Windows.Forms.Button button2;
@@ -358,6 +359,6 @@
         private System.Windows.Forms.Button btnGravar;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox txtPrecoProduto;
     }
 }
