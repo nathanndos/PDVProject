@@ -43,17 +43,23 @@
             this.label5 = new System.Windows.Forms.Label();
             this.disableProduto = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtTotal = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtPrecoProduto = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dgProdutosVenda = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.txtSequencia = new System.Windows.Forms.TextBox();
             this.btnDesconto = new System.Windows.Forms.Button();
             this.btnFinanceiro = new System.Windows.Forms.Button();
             this.btnGravar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtTotalMov = new System.Windows.Forms.TextBox();
+            this.txtDesconto = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProdutosVenda)).BeginInit();
             this.SuspendLayout();
@@ -181,6 +187,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.txtDesconto);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.txtTotal);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txtPrecoProduto);
             this.groupBox1.Controls.Add(this.button2);
@@ -193,10 +203,28 @@
             this.groupBox1.Controls.Add(this.txtQtd);
             this.groupBox1.Location = new System.Drawing.Point(42, 189);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(888, 427);
+            this.groupBox1.Size = new System.Drawing.Size(888, 416);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Produtos";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(367, 37);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(68, 15);
+            this.label8.TabIndex = 25;
+            this.label8.Text = "Preço Total:";
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.Enabled = false;
+            this.txtTotal.Location = new System.Drawing.Point(367, 56);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(100, 23);
+            this.txtTotal.TabIndex = 24;
+            this.txtTotal.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTotal_KeyDown);
             // 
             // label7
             // 
@@ -213,6 +241,7 @@
             this.txtPrecoProduto.Name = "txtPrecoProduto";
             this.txtPrecoProduto.Size = new System.Drawing.Size(100, 23);
             this.txtPrecoProduto.TabIndex = 5;
+            this.txtPrecoProduto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPrecoProduto_KeyDown);
             // 
             // button2
             // 
@@ -251,13 +280,13 @@
             this.label6.TabIndex = 20;
             this.label6.Text = "Sequencia";
             // 
-            // textBox10
+            // txtSequencia
             // 
-            this.textBox10.Enabled = false;
-            this.textBox10.Location = new System.Drawing.Point(850, 121);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(80, 23);
-            this.textBox10.TabIndex = 21;
+            this.txtSequencia.Enabled = false;
+            this.txtSequencia.Location = new System.Drawing.Point(850, 121);
+            this.txtSequencia.Name = "txtSequencia";
+            this.txtSequencia.Size = new System.Drawing.Size(80, 23);
+            this.txtSequencia.TabIndex = 21;
             // 
             // btnDesconto
             // 
@@ -288,7 +317,7 @@
             this.btnGravar.TabStop = false;
             this.btnGravar.Text = "Gravar";
             this.btnGravar.UseVisualStyleBackColor = true;
-            this.btnGravar.Click += new System.EventHandler(this.button1_Click);
+            this.btnGravar.Click += new System.EventHandler(this.GravarMovimento);
             // 
             // btnNovo
             // 
@@ -300,13 +329,52 @@
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = true;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(705, 614);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(82, 25);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Total: R$";
+            // 
+            // txtTotalMov
+            // 
+            this.txtTotalMov.Enabled = false;
+            this.txtTotalMov.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtTotalMov.Location = new System.Drawing.Point(793, 611);
+            this.txtTotalMov.Name = "txtTotalMov";
+            this.txtTotalMov.Size = new System.Drawing.Size(137, 32);
+            this.txtTotalMov.TabIndex = 0;
+            this.txtTotalMov.TabStop = false;
+            this.txtTotalMov.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtDesconto
+            // 
+            this.txtDesconto.Location = new System.Drawing.Point(489, 55);
+            this.txtDesconto.Name = "txtDesconto";
+            this.txtDesconto.Size = new System.Drawing.Size(100, 23);
+            this.txtDesconto.TabIndex = 26;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(489, 37);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(60, 15);
+            this.label10.TabIndex = 27;
+            this.label10.Text = "Desconto:";
+            // 
             // MovimentoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 661);
+            this.Controls.Add(this.txtTotalMov);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.btnNovo);
-            this.Controls.Add(this.textBox10);
+            this.Controls.Add(this.txtSequencia);
             this.Controls.Add(this.btnGravar);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnFinanceiro);
@@ -353,12 +421,18 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox txtSequencia;
         private System.Windows.Forms.Button btnDesconto;
         private System.Windows.Forms.Button btnFinanceiro;
         private System.Windows.Forms.Button btnGravar;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtPrecoProduto;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtTotalMov;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtDesconto;
     }
 }

@@ -27,7 +27,7 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@Id_mp", mp.Codigo);
                     cmd.Parameters.AddWithValue("@Ide", mp.Ide);
                     cmd.Parameters.AddWithValue("@TotalFinal", mp.TotalFinal);
-                    cmd.Parameters.AddWithValue("@TotalOriginal", mp.TotalOriginal);
+                    cmd.Parameters.AddWithValue("@TotalOriginal", mp.PrecoUnitario);
                     cmd.Parameters.AddWithValue("@FuncionarioId", mp.funcionario__id);
                     cmd.Parameters.AddWithValue("@ClienteID", mp.movimento__id);
 

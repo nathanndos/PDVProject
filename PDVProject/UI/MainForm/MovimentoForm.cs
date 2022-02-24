@@ -16,14 +16,14 @@ namespace PDVProject.UI
     {
         List<MovimentoProduto> movimentoProdutos = new List<MovimentoProduto>();
         Produto produto = null;
+        Cliente cliente = null;
+        Funcionario funcionario = null;
+        Movimento movimento = null;
         public MovimentoForm()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
+            dgProdutosVenda.DataSource = movimentoProdutos;
+            txtTotalMov.Text = "0,0";
         }
 
         private void Movimento_Load(object sender, EventArgs e)
@@ -46,7 +46,6 @@ namespace PDVProject.UI
             if (e.KeyCode == Keys.Enter)
             {
                 removeSound(e);
-                Cliente cliente = null;
                 cliente = ClienteBLL.getData(int.Parse(txtCliente.Text));
                 disableCliente.Text = $"{ cliente.Nome} {cliente.SobreNome}";
             }
@@ -56,7 +55,6 @@ namespace PDVProject.UI
             if (e.KeyCode == Keys.Enter)
             {
                 removeSound(e);
-                Funcionario funcionario = null;
                 funcionario = FuncionarioBLL.getData(int.Parse(txtVendedor.Text));
                 disableVendedor.Text = funcionario.Nome;
             }
@@ -86,10 +84,70 @@ namespace PDVProject.UI
         {
             dgProdutosVenda.DataSource = null;
             produto = ProdutoBLL.getData(int.Parse(txtCodProduto.Text));
-            movimentoProdutos.Add(new MovimentoProduto(produto.Nome,int.Parse(txtQtd.Text),produto.Preco));
-            dgProdutosVenda.DataSource = movimentoProdutos;
-            dgProdutosVenda.Columns["ProdutoNome"].DisplayIndex = 1;
+            movimentoProdutos.Add(new MovimentoProduto(produto.Codigo,
+                produto.Nome,
+                int.Parse(txtQtd.Text),
+                produto.Preco, 
+                funcionario.Codigo,
+                funcionario.Nome,
+                DateTime.Now));
+            configGrid();
+            setTotalFinal();
+            clearFields();
+            txtCodProduto.Focus();
             produto = null;
+
+        }
+        private void txtTotal_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void txtPrecoProduto_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                removeSound(e);
+                decimal result = decimal.Parse(txtQtd.Text) * decimal.Parse(txtPrecoProduto.Text);
+                txtTotal.Text = result.ToString();
+                MessageBox.Show("" + txtTotal.Text);
+            }
+        }
+        // -------------
+        public void configGrid()
+        {
+            dgProdutosVenda.DataSource = movimentoProdutos;
+            dgProdutosVenda.Columns["Produto__id"].DisplayIndex = 0;
+            dgProdutosVenda.Columns["ProdutoNome"].DisplayIndex = 1;
+            dgProdutosVenda.Columns["Quantidade"].DisplayIndex = 2;
+            dgProdutosVenda.Columns["PrecoUnitario"].DisplayIndex = 3;
+        }
+        public void setTotalFinal()
+        {
+            decimal result = decimal.Parse(txtTotalMov.Text);
+            result = result + (int.Parse(txtQtd.Text) * produto.Preco);
+            txtTotalMov.Text = result.ToString();
+        }
+        public void clearFields()
+        {
+            txtQtd.Text = "1";
+            txtCodProduto.Text = "";
+            txtPrecoProduto.Text = "";
+            txtTotal.Text = "";
+        }
+
+        private void GravarMovimento(object sender, EventArgs e)
+        {
+            if(txtSequencia.Text == "")
+            {
+                MovimentoBLL.getLast();
+            }
+            else
+            {
+
+            }
+            movimento = new Movimento();
+            MovimentoBLL.save();
         }
     }
 }
