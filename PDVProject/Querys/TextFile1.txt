@@ -65,4 +65,6 @@ ALTER TABLE MOVIMENTO_PRODUTO
 	ADD CONSTRAINT fk_ProdutoMp__Id FOREIGN KEY (Produto__Id) REFERENCES Produtos(Id)
 ALTER TABLE movimento_produto
 	add status int not null
+ALTER TABLE Movimento_Produto
+	Column Desconto Decimal(3,2)
 

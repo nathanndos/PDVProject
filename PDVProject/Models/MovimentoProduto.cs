@@ -8,9 +8,10 @@ namespace Entity
 {
     public class MovimentoProduto:ClasseBase
     {
-        public static int Id { private get; set; }
+        public static int Id {get; set; }
         public int Quantidade { get; set; }
         public decimal PrecoUnitario { get; set; }
+        public decimal Desconto { get; set; }
         public decimal TotalFinal { get; set; }
         #region Foreign Key
         public int movimento__id { get; set; }
@@ -32,7 +33,8 @@ namespace Entity
             string produtoNome,
             string produto__ide,
             int quantidade, 
-            decimal precoUnitario, 
+            decimal precoUnitario,
+            decimal desconto,
             int funcionarioCodigo, 
             string funcionarioNome,
             DateTime datalancamento)
@@ -42,7 +44,8 @@ namespace Entity
             ProdutoNome = produtoNome;
             Produto__ide = produto__ide;
             Quantidade = quantidade;
-            PrecoUnitario = precoUnitario;
+            Desconto = precoUnitario * (desconto/100);
+            PrecoUnitario = precoUnitario - Desconto;
             TotalFinal = precoUnitario * quantidade;
             funcionario__id = funcionarioCodigo;
             FuncionarioNome = funcionarioNome;

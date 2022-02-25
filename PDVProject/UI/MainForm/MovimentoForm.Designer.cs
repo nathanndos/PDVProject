@@ -43,6 +43,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.disableProduto = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtDesconto = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -58,8 +60,6 @@
             this.btnNovo = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.txtTotalMov = new System.Windows.Forms.TextBox();
-            this.txtDesconto = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProdutosVenda)).BeginInit();
             this.SuspendLayout();
@@ -208,6 +208,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Produtos";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(489, 37);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(60, 15);
+            this.label10.TabIndex = 27;
+            this.label10.Text = "Desconto:";
+            // 
+            // txtDesconto
+            // 
+            this.txtDesconto.Location = new System.Drawing.Point(489, 55);
+            this.txtDesconto.Name = "txtDesconto";
+            this.txtDesconto.Size = new System.Drawing.Size(100, 23);
+            this.txtDesconto.TabIndex = 26;
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -264,12 +280,19 @@
             // 
             // dgProdutosVenda
             // 
+            this.dgProdutosVenda.AllowUserToAddRows = false;
+            this.dgProdutosVenda.AllowUserToDeleteRows = false;
+            this.dgProdutosVenda.AllowUserToResizeColumns = false;
+            this.dgProdutosVenda.AllowUserToResizeRows = false;
             this.dgProdutosVenda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgProdutosVenda.Location = new System.Drawing.Point(18, 132);
+            this.dgProdutosVenda.MultiSelect = false;
             this.dgProdutosVenda.Name = "dgProdutosVenda";
             this.dgProdutosVenda.RowTemplate.Height = 25;
+            this.dgProdutosVenda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgProdutosVenda.Size = new System.Drawing.Size(848, 275);
             this.dgProdutosVenda.TabIndex = 19;
+            this.dgProdutosVenda.TabStop = false;
             // 
             // label6
             // 
@@ -349,22 +372,6 @@
             this.txtTotalMov.TabIndex = 0;
             this.txtTotalMov.TabStop = false;
             this.txtTotalMov.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtDesconto
-            // 
-            this.txtDesconto.Location = new System.Drawing.Point(489, 55);
-            this.txtDesconto.Name = "txtDesconto";
-            this.txtDesconto.Size = new System.Drawing.Size(100, 23);
-            this.txtDesconto.TabIndex = 26;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(489, 37);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(60, 15);
-            this.label10.TabIndex = 27;
-            this.label10.Text = "Desconto:";
             // 
             // MovimentoForm
             // 

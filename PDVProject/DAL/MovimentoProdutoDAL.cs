@@ -20,19 +20,20 @@ namespace DAL
             {
                 try
                 {
-                    const string sqlQuery = "INSERT INTO Movimento_Produto(ID, Ide, TotalFinal,TotalOriginal,Funcionario__Id, movimento__id,DataLancamento, Status)" +
-                                            "VALUES(@Id_mp, @Ide, @TotalFinal,@TotalOriginal, @FuncionarioId, @ClienteID, @DataLancamento,  @status)";
+                    const string sqlQuery = "INSERT INTO Movimento_Produto(ID, Ide, TotalFinal,Quantidade, TotalOriginal,Funcionario__Id, Produto__id, movimento__id,DataLancamento, Status)" +
+                                            "VALUES(@Id_mp, @Ide, @TotalFinal,@Quantidade, @TotalOriginal, @FuncionarioId,@ProdutoId, @MovimentoId,@DataLancamento,  @status)";
 
                     SqlCommand cmd = new SqlCommand(sqlQuery, conec);//passa a query e passa a instancia da conexao 
                     cmd.Parameters.AddWithValue("@Id_mp", mp.Codigo);
                     cmd.Parameters.AddWithValue("@Ide", mp.Ide);
                     cmd.Parameters.AddWithValue("@TotalFinal", mp.TotalFinal);
+                    cmd.Parameters.AddWithValue("@Quantidade", mp.Quantidade);
                     cmd.Parameters.AddWithValue("@TotalOriginal", mp.PrecoUnitario);
+                    cmd.Parameters.AddWithValue("@ProdutoId", mp.produto__id);
                     cmd.Parameters.AddWithValue("@FuncionarioId", mp.funcionario__id);
-                    cmd.Parameters.AddWithValue("@ClienteID", mp.movimento__id);
+                    cmd.Parameters.AddWithValue("@MovimentoId", mp.produto__id  );
                     cmd.Parameters.AddWithValue("@DataLancamento", mp.DataLancamento);
                     cmd.Parameters.AddWithValue("@status", mp.Status);
-
 
                     conec.Open();//abre a conexao
                     cmd.ExecuteNonQuery();//Executa uma instrução do blocoSQL
@@ -81,7 +82,7 @@ namespace DAL
             {
                 try
                 {
-                    const string sqlQuery = "SELECT COUNT(id) FROM Movimento_Produto WHERE id = @codigo and status = 0";
+                    const string sqlQuery = "SELECT COUNT(id) FROM Movimento_Produto WHERE id = @codigo";
                     SqlCommand cmd = new SqlCommand(sqlQuery, conec);
                     cmd.Parameters.AddWithValue("@codigo", codigo);
                     conec.Open();
@@ -118,7 +119,7 @@ namespace DAL
             {
                 try
                 {
-                    const string sqlQuery = "SELECT MAX(id) FROM MovimentoProduto";
+                    const string sqlQuery = "SELECT MAX(id) FROM Movimento_Produto";
                     SqlCommand cmd = new SqlCommand(sqlQuery, conec);
                     conec.Open();
                     last = int.Parse(cmd.ExecuteScalar().ToString());

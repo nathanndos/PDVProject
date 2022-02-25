@@ -86,7 +86,7 @@ namespace PDVProject.UI
         {
             dgProdutosVenda.DataSource = null;
             produto = ProdutoBLL.getData(int.Parse(txtCodProduto.Text));
-            movimentoProdutos.Add(new MovimentoProduto(produto.Codigo,
+            movimentoProdutos.Add(new  MovimentoProduto(produto.Codigo,
                 produto.Nome,
                 produto.Ide,
                 int.Parse(txtQtd.Text),
@@ -148,18 +148,23 @@ namespace PDVProject.UI
             }
             else
             {
+                MovimentoProdutoBLL.getLast();
+                MovimentoBLL.getLast();
                 movimento = new Movimento(convertDecimal(txtTotalMov),
                     convertDecimal(txtDesconto),
                     funcionario.Codigo,
                     cliente.Codigo);
+                MovimentoBLL.save(movimento);
+                int valor = MovimentoProduto.Id;
                 foreach (MovimentoProduto i in movimentoProdutos)
                 {
+                    valor++;
+                    i.Codigo = valor;
                     i.movimento__id = movimento.Codigo;
-                    MessageBox.Show(""+movimento.Codigo);
-                    MovimentoProdutoProdutoBLL.save(i);
+                    MovimentoProdutoBLL.save(i);
                 }
+                txtSequencia.Text = movimento.Codigo.ToString();
             }
-            MovimentoBLL.save(movimento);
         }
         public decimal convertDecimal(TextBox tb) => decimal.Parse(tb.Text);  
 
