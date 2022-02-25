@@ -20,8 +20,8 @@ namespace DAL
             {
                 try
                 {
-                    const string sqlQuery = "INSERT INTO MovimentoProduto(ID, Ide, TotalFinal,TotalOriginal,Funcionario__Id, movimento__id,DataAlteracao,DataCriacao, Status)" +
-                                            "VALUES(@Id_mp, @Ide, @Desconto, @TotalFinal,@TotalOriginal, @FuncionarioId, @ClienteID, GETDATE(), GETDATE(), @status)";
+                    const string sqlQuery = "INSERT INTO Movimento_Produto(ID, Ide, TotalFinal,TotalOriginal,Funcionario__Id, movimento__id,DataLancamento, Status)" +
+                                            "VALUES(@Id_mp, @Ide, @TotalFinal,@TotalOriginal, @FuncionarioId, @ClienteID, @DataLancamento,  @status)";
 
                     SqlCommand cmd = new SqlCommand(sqlQuery, conec);//passa a query e passa a instancia da conexao 
                     cmd.Parameters.AddWithValue("@Id_mp", mp.Codigo);
@@ -30,6 +30,9 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@TotalOriginal", mp.PrecoUnitario);
                     cmd.Parameters.AddWithValue("@FuncionarioId", mp.funcionario__id);
                     cmd.Parameters.AddWithValue("@ClienteID", mp.movimento__id);
+                    cmd.Parameters.AddWithValue("@DataLancamento", mp.DataLancamento);
+                    cmd.Parameters.AddWithValue("@status", mp.Status);
+
 
                     conec.Open();//abre a conexao
                     cmd.ExecuteNonQuery();//Executa uma instrução do blocoSQL
@@ -78,7 +81,7 @@ namespace DAL
             {
                 try
                 {
-                    const string sqlQuery = "SELECT COUNT(id) FROM MovimentoProduto WHERE id = @codigo and status = 0";
+                    const string sqlQuery = "SELECT COUNT(id) FROM Movimento_Produto WHERE id = @codigo and status = 0";
                     SqlCommand cmd = new SqlCommand(sqlQuery, conec);
                     cmd.Parameters.AddWithValue("@codigo", codigo);
                     conec.Open();

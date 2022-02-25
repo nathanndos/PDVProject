@@ -18,35 +18,42 @@ namespace Entity
         public int produto__id { get; set; }
         #endregion
         public string ProdutoNome { get; set; }
+        public string Produto__ide { get; set; }
         public string FuncionarioNome { get; set; }     
         public DateTime DataLancamento { get; set; }    
 
         public MovimentoProduto()
         {
-            Id++;
-            Codigo = Id;
-            Ide = new string(ChaveAleatoria());
-            Status = 0;
-
+            createEntity();
         }
         public MovimentoProduto(int codigo) => Codigo = codigo;
 
         public MovimentoProduto(int produtoCodigo,
             string produtoNome,
+            string produto__ide,
             int quantidade, 
             decimal precoUnitario, 
             int funcionarioCodigo, 
             string funcionarioNome,
             DateTime datalancamento)
         {
+            createEntity();
             produto__id = produtoCodigo;
             ProdutoNome = produtoNome;
+            Produto__ide = produto__ide;
             Quantidade = quantidade;
             PrecoUnitario = precoUnitario;
             TotalFinal = precoUnitario * quantidade;
             funcionario__id = funcionarioCodigo;
             FuncionarioNome = funcionarioNome;
             DataLancamento = datalancamento;
+        }
+        public void createEntity()
+        {
+            Id++;
+            Codigo = Id;
+            Ide = new string(ChaveAleatoria());
+            Status = 0;
         }
     }
 }

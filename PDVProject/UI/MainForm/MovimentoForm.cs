@@ -19,10 +19,12 @@ namespace PDVProject.UI
         Cliente cliente = null;
         Funcionario funcionario = null;
         Movimento movimento = null;
+        MovimentoProduto mp = null;
         public MovimentoForm()
         {
             InitializeComponent();
             dgProdutosVenda.DataSource = movimentoProdutos;
+            clearFields();
             txtTotalMov.Text = "0,0";
         }
 
@@ -86,6 +88,7 @@ namespace PDVProject.UI
             produto = ProdutoBLL.getData(int.Parse(txtCodProduto.Text));
             movimentoProdutos.Add(new MovimentoProduto(produto.Codigo,
                 produto.Nome,
+                produto.Ide,
                 int.Parse(txtQtd.Text),
                 produto.Preco, 
                 funcionario.Codigo,
@@ -110,7 +113,6 @@ namespace PDVProject.UI
                 removeSound(e);
                 decimal result = decimal.Parse(txtQtd.Text) * decimal.Parse(txtPrecoProduto.Text);
                 txtTotal.Text = result.ToString();
-                MessageBox.Show("" + txtTotal.Text);
             }
         }
         // -------------
@@ -134,21 +136,33 @@ namespace PDVProject.UI
             txtCodProduto.Text = "";
             txtPrecoProduto.Text = "";
             txtTotal.Text = "";
+            txtDesconto.Text = "0,0";
+
         }
 
         private void GravarMovimento(object sender, EventArgs e)
         {
-            if(txtSequencia.Text == "")
+            if(txtSequencia.Text != "")
             {
                 MovimentoBLL.getLast();
             }
             else
             {
-
+                movimento = new Movimento(convertDecimal(txtTotalMov),
+                    convertDecimal(txtDesconto),
+                    funcionario.Codigo,
+                    cliente.Codigo);
+                foreach (MovimentoProduto i in movimentoProdutos)
+                {
+                    i.movimento__id = movimento.Codigo;
+                    MessageBox.Show(""+movimento.Codigo);
+                    MovimentoProdutoProdutoBLL.save(i);
+                }
             }
-            movimento = new Movimento();
-            MovimentoBLL.save();
+            MovimentoBLL.save(movimento);
         }
+        public decimal convertDecimal(TextBox tb) => decimal.Parse(tb.Text);  
+
     }
 }
         
