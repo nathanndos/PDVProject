@@ -84,21 +84,30 @@ namespace PDVProject.UI
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            dgProdutosVenda.DataSource = null;
-            produto = ProdutoBLL.getData(int.Parse(txtCodProduto.Text));
-            movimentoProdutos.Add(new  MovimentoProduto(produto.Codigo,
-                produto.Nome,
-                produto.Ide,
-                int.Parse(txtQtd.Text),
-                produto.Preco, 
-                funcionario.Codigo,
-                funcionario.Nome,
-                DateTime.Now));
-            configGrid();
-            setTotalFinal();
-            clearFields();
-            txtCodProduto.Focus();
-            produto = null;
+            try
+            {
+                dgProdutosVenda.DataSource = null;
+                produto = ProdutoBLL.getData(int.Parse(txtCodProduto.Text));
+                movimentoProdutos.Add(new MovimentoProduto(produto.Codigo,
+                    produto.Nome,
+                    produto.Ide,
+                    int.Parse(txtQtd.Text),
+                    produto.Preco,
+                    decimal.Parse(txtDesconto.Text),
+                    funcionario.Codigo,
+                    funcionario.Nome,
+                    DateTime.Now));
+                configGrid();
+                setTotalFinal();
+                clearFields();
+                txtCodProduto.Focus();
+                produto = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
 
         }
         private void txtTotal_KeyDown(object sender, KeyEventArgs e)
@@ -111,7 +120,8 @@ namespace PDVProject.UI
             if (e.KeyCode == Keys.Enter)
             {
                 removeSound(e);
-                decimal result = decimal.Parse(txtQtd.Text) * decimal.Parse(txtPrecoProduto.Text);
+                decimal p = decimal.Parse(txtPrecoProduto.Text);
+                decimal result = decimal.Parse(txtQtd.Text) * (p - (p * decimal.Parse(txtDesconto.Text)/100));
                 txtTotal.Text = result.ToString();
             }
         }
@@ -127,7 +137,7 @@ namespace PDVProject.UI
         public void setTotalFinal()
         {
             decimal result = decimal.Parse(txtTotalMov.Text);
-            result = result + (int.Parse(txtQtd.Text) * produto.Preco);
+            result = result + (int.Parse(txtQtd.Text) * (produto.Preco - decimal.Parse(txtDesconto.Text)/100));
             txtTotalMov.Text = result.ToString();
         }
         public void clearFields()
@@ -149,6 +159,7 @@ namespace PDVProject.UI
             else
             {
                 MovimentoProdutoBLL.getLast();
+
                 MovimentoBLL.getLast();
                 movimento = new Movimento(convertDecimal(txtTotalMov),
                     convertDecimal(txtDesconto),
@@ -156,6 +167,7 @@ namespace PDVProject.UI
                     cliente.Codigo);
                 MovimentoBLL.save(movimento);
                 int valor = MovimentoProduto.Id;
+                MessageBox.Show(valor.ToString());
                 foreach (MovimentoProduto i in movimentoProdutos)
                 {
                     valor++;

@@ -211,15 +211,15 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(489, 37);
+            this.label10.Location = new System.Drawing.Point(368, 37);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(60, 15);
+            this.label10.Size = new System.Drawing.Size(88, 15);
             this.label10.TabIndex = 27;
-            this.label10.Text = "Desconto:";
+            this.label10.Text = "Desconto Unid:";
             // 
             // txtDesconto
             // 
-            this.txtDesconto.Location = new System.Drawing.Point(489, 55);
+            this.txtDesconto.Location = new System.Drawing.Point(368, 55);
             this.txtDesconto.Name = "txtDesconto";
             this.txtDesconto.Size = new System.Drawing.Size(100, 23);
             this.txtDesconto.TabIndex = 26;
@@ -227,7 +227,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(367, 37);
+            this.label8.Location = new System.Drawing.Point(484, 36);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(68, 15);
             this.label8.TabIndex = 25;
@@ -236,7 +236,7 @@
             // txtTotal
             // 
             this.txtTotal.Enabled = false;
-            this.txtTotal.Location = new System.Drawing.Point(367, 56);
+            this.txtTotal.Location = new System.Drawing.Point(484, 55);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(100, 23);
             this.txtTotal.TabIndex = 24;

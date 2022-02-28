@@ -20,14 +20,15 @@ namespace DAL
             {
                 try
                 {
-                    const string sqlQuery = "INSERT INTO Movimento_Produto(ID, Ide, TotalFinal,Quantidade, TotalOriginal,Funcionario__Id, Produto__id, movimento__id,DataLancamento, Status)" +
-                                            "VALUES(@Id_mp, @Ide, @TotalFinal,@Quantidade, @TotalOriginal, @FuncionarioId,@ProdutoId, @MovimentoId,@DataLancamento,  @status)";
+                    const string sqlQuery = "INSERT INTO Movimento_Produto(ID, Ide, TotalFinal,Quantidade, Desconto,TotalOriginal,Funcionario__Id, Produto__id, movimento__id,DataLancamento, Status)" +
+                                            "VALUES(@Id_mp, @Ide, @TotalFinal,@Quantidade, @Desconto,@TotalOriginal, @FuncionarioId,@ProdutoId, @MovimentoId,@DataLancamento,  @status)";
 
                     SqlCommand cmd = new SqlCommand(sqlQuery, conec);//passa a query e passa a instancia da conexao 
                     cmd.Parameters.AddWithValue("@Id_mp", mp.Codigo);
                     cmd.Parameters.AddWithValue("@Ide", mp.Ide);
                     cmd.Parameters.AddWithValue("@TotalFinal", mp.TotalFinal);
                     cmd.Parameters.AddWithValue("@Quantidade", mp.Quantidade);
+                    cmd.Parameters.AddWithValue("@Desconto", mp.Desconto);
                     cmd.Parameters.AddWithValue("@TotalOriginal", mp.PrecoUnitario);
                     cmd.Parameters.AddWithValue("@ProdutoId", mp.produto__id);
                     cmd.Parameters.AddWithValue("@FuncionarioId", mp.funcionario__id);
@@ -122,9 +123,8 @@ namespace DAL
                     const string sqlQuery = "SELECT MAX(id) FROM Movimento_Produto";
                     SqlCommand cmd = new SqlCommand(sqlQuery, conec);
                     conec.Open();
-                    last = int.Parse(cmd.ExecuteScalar().ToString());
+                    last = cmd.ExecuteScalar() != null ? last = int.Parse(cmd.ExecuteScalar().ToString()) : last = 0;                      
                     //Verifica o ultimo id registrado no banco e o retorna
-
                 }
                 catch
                 {

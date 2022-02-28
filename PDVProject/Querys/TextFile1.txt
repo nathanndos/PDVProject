@@ -58,13 +58,22 @@ ALTER TABLE MOVIMENTO_PRODUTO
 ALTER TABLE MOVIMENTO_PRODUTO
 	ADD CONSTRAINT fk_funcionarioMp__Id FOREIGN KEY (Funcionario__Id) REFERENCES Funcionarios(Id)
 ALTER TABLE MOVIMENTO_PRODUTO
-	ADD Quantidade INT NOT NULL
+	ADD Quantidade INT;
+ALTER TABLE movimento_produto ALTER COLUMN Quantidade int not null;  
+update Movimento_Produto set Quantidade=1
+
+
 ALTER TABLE MOVIMENTO_PRODUTO
 	ADD Produto__Id INT NOT NULL
 ALTER TABLE MOVIMENTO_PRODUTO
 	ADD CONSTRAINT fk_ProdutoMp__Id FOREIGN KEY (Produto__Id) REFERENCES Produtos(Id)
 ALTER TABLE movimento_produto
-	add status int not null
+	add Status int not null
+update Movimento_Produto set status=0 
+ALTER TABLE movimento_produto ALTER COLUMN Status int not null; 
+
 ALTER TABLE Movimento_Produto
-	Column Desconto Decimal(3,2)
+	add Desconto Decimal(3,2)
+update Movimento_Produto set Desconto=0.0 
+ALTER TABLE movimento_produto ALTER COLUMN Desconto Decimal(3,2) not null; 
 

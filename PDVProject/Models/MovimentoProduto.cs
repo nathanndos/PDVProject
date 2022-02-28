@@ -44,9 +44,9 @@ namespace Entity
             ProdutoNome = produtoNome;
             Produto__ide = produto__ide;
             Quantidade = quantidade;
-            Desconto = precoUnitario * (desconto/100);
-            PrecoUnitario = precoUnitario - Desconto;
-            TotalFinal = precoUnitario * quantidade;
+            Desconto = desconto> 0.00m ? Math.Round(precoUnitario * (desconto / 100),2): 0.00m ;
+            PrecoUnitario = precoUnitario;
+            TotalFinal = (precoUnitario - Desconto) * quantidade;
             funcionario__id = funcionarioCodigo;
             FuncionarioNome = funcionarioNome;
             DataLancamento = datalancamento;
