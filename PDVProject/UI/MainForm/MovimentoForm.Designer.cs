@@ -60,6 +60,7 @@
             this.btnNovo = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.txtTotalMov = new System.Windows.Forms.TextBox();
+            this.lbFeedBack = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProdutosVenda)).BeginInit();
             this.SuspendLayout();
@@ -222,7 +223,8 @@
             this.txtDesconto.Location = new System.Drawing.Point(368, 55);
             this.txtDesconto.Name = "txtDesconto";
             this.txtDesconto.Size = new System.Drawing.Size(100, 23);
-            this.txtDesconto.TabIndex = 26;
+            this.txtDesconto.TabIndex = 6;
+            this.txtDesconto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDesconto_KeyDown);
             // 
             // label8
             // 
@@ -264,7 +266,7 @@
             this.button2.Location = new System.Drawing.Point(825, 55);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(41, 23);
-            this.button2.TabIndex = 7;
+            this.button2.TabIndex = 8;
             this.button2.Text = "X";
             this.button2.UseVisualStyleBackColor = true;
             // 
@@ -273,7 +275,7 @@
             this.button1.Location = new System.Drawing.Point(744, 55);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
+            this.button1.TabIndex = 7;
             this.button1.Text = "Lançar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
@@ -293,6 +295,7 @@
             this.dgProdutosVenda.Size = new System.Drawing.Size(848, 275);
             this.dgProdutosVenda.TabIndex = 19;
             this.dgProdutosVenda.TabStop = false;
+            this.dgProdutosVenda.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgProdutosVenda_MouseClick);
             // 
             // label6
             // 
@@ -373,11 +376,21 @@
             this.txtTotalMov.TabStop = false;
             this.txtTotalMov.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // lbFeedBack
+            // 
+            this.lbFeedBack.AutoSize = true;
+            this.lbFeedBack.Location = new System.Drawing.Point(12, 637);
+            this.lbFeedBack.Name = "lbFeedBack";
+            this.lbFeedBack.Size = new System.Drawing.Size(57, 15);
+            this.lbFeedBack.TabIndex = 28;
+            this.lbFeedBack.Text = "lbRodaPe";
+            // 
             // MovimentoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 661);
+            this.Controls.Add(this.lbFeedBack);
             this.Controls.Add(this.txtTotalMov);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.btnNovo);
@@ -441,5 +454,6 @@
         private System.Windows.Forms.TextBox txtTotalMov;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtDesconto;
+        private System.Windows.Forms.Label lbFeedBack;
     }
 }

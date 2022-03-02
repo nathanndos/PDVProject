@@ -73,11 +73,6 @@ namespace PDVProject.UI
             }
         }
 
-        private void d_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-
-        }
         #region Funções manuais
         public void removeSound(KeyEventArgs e) => e.SuppressKeyPress = true;
         #endregion
@@ -92,6 +87,7 @@ namespace PDVProject.UI
                     produto.Nome,
                     produto.Ide,
                     int.Parse(txtQtd.Text),
+                    decimal.Parse(txtPrecoProduto.Text),
                     produto.Preco,
                     decimal.Parse(txtDesconto.Text),
                     funcionario.Codigo,
@@ -147,6 +143,7 @@ namespace PDVProject.UI
             txtPrecoProduto.Text = "";
             txtTotal.Text = "";
             txtDesconto.Text = "0,0";
+            lbFeedBack.Text = "";
 
         }
 
@@ -167,7 +164,6 @@ namespace PDVProject.UI
                     cliente.Codigo);
                 MovimentoBLL.save(movimento);
                 int valor = MovimentoProduto.Id;
-                MessageBox.Show(valor.ToString());
                 foreach (MovimentoProduto i in movimentoProdutos)
                 {
                     valor++;
@@ -176,10 +172,20 @@ namespace PDVProject.UI
                     MovimentoProdutoBLL.save(i);
                 }
                 txtSequencia.Text = movimento.Codigo.ToString();
+                lbFeedBack.Text = "Movimento salvo com sucesso!";
             }
         }
-        public decimal convertDecimal(TextBox tb) => decimal.Parse(tb.Text);  
+        public decimal convertDecimal(TextBox tb) => decimal.Parse(tb.Text);
 
+        private void txtDesconto_KeyDown(object sender, KeyEventArgs e)
+        {
+            txtPrecoProduto_KeyDown(sender, e);
+        }
+
+        private void dgProdutosVenda_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }
         
