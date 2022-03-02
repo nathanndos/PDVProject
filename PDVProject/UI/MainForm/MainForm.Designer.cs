@@ -1,7 +1,7 @@
 ﻿
 namespace PDVProject.UI
 {
-    partial class MainForm
+    partial class MainForm2
     {
         /// <summary>
         /// Required designer variable.

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using BLL;
 using Entity;
 
+
 namespace PDVProject.UI
 {
     public partial class MovimentoForm : Form
@@ -146,7 +147,6 @@ namespace PDVProject.UI
             lbFeedBack.Text = "";
 
         }
-
         private void GravarMovimento(object sender, EventArgs e)
         {
             if(txtSequencia.Text != "")
@@ -185,6 +185,11 @@ namespace PDVProject.UI
         private void dgProdutosVenda_MouseClick(object sender, MouseEventArgs e)
         {
 
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

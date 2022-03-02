@@ -49,7 +49,7 @@
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtPrecoProduto = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnExcluir = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dgProdutosVenda = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
@@ -194,7 +194,7 @@
             this.groupBox1.Controls.Add(this.txtTotal);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txtPrecoProduto);
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.btnExcluir);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.dgProdutosVenda);
             this.groupBox1.Controls.Add(this.disableProduto);
@@ -214,9 +214,9 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(368, 37);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(88, 15);
+            this.label10.Size = new System.Drawing.Size(81, 15);
             this.label10.TabIndex = 27;
-            this.label10.Text = "Desconto Unid:";
+            this.label10.Text = "Desconto(%) :";
             // 
             // txtDesconto
             // 
@@ -261,14 +261,15 @@
             this.txtPrecoProduto.TabIndex = 5;
             this.txtPrecoProduto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPrecoProduto_KeyDown);
             // 
-            // button2
+            // btnExcluir
             // 
-            this.button2.Location = new System.Drawing.Point(825, 55);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(41, 23);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "X";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnExcluir.Location = new System.Drawing.Point(825, 55);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(41, 23);
+            this.btnExcluir.TabIndex = 8;
+            this.btnExcluir.Text = "X";
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // button1
             // 
@@ -316,7 +317,7 @@
             // 
             // btnDesconto
             // 
-            this.btnDesconto.Location = new System.Drawing.Point(227, 65);
+            this.btnDesconto.Location = new System.Drawing.Point(222, 65);
             this.btnDesconto.Name = "btnDesconto";
             this.btnDesconto.Size = new System.Drawing.Size(75, 35);
             this.btnDesconto.TabIndex = 0;
@@ -347,7 +348,7 @@
             // 
             // btnNovo
             // 
-            this.btnNovo.Location = new System.Drawing.Point(227, 29);
+            this.btnNovo.Location = new System.Drawing.Point(222, 29);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(75, 35);
             this.btnNovo.TabIndex = 0;
@@ -438,7 +439,7 @@
         private System.Windows.Forms.TextBox disableProduto;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgProdutosVenda;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtSequencia;

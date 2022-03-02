@@ -20,16 +20,17 @@ namespace DAL
             {
                 try
                 {
-                    const string sqlQuery = "INSERT INTO Movimento_Produto(ID, Ide, TotalFinal,Quantidade, Desconto,TotalOriginal,Funcionario__Id, Produto__id, movimento__id,DataLancamento, Status)" +
-                                            "VALUES(@Id_mp, @Ide, @TotalFinal,@Quantidade, @Desconto,@TotalOriginal, @FuncionarioId,@ProdutoId, @MovimentoId,@DataLancamento,  @status)";
+                    const string sqlQuery = "INSERT INTO Movimento_Produto(ID, Ide, PrecoOriginal,PrecoFinal,PrecoUnitario,Quantidade, Desconto,Funcionario__Id, Produto__id, movimento__id,DataLancamento, Status)" +
+                                            "VALUES(@Id_mp, @Ide, @PrecoOriginal,@PrecoFinal,@PrecoUnitario,@Quantidade, @Desconto, @FuncionarioId,@ProdutoId, @MovimentoId,@DataLancamento,  @status)";
 
                     SqlCommand cmd = new SqlCommand(sqlQuery, conec);//passa a query e passa a instancia da conexao 
                     cmd.Parameters.AddWithValue("@Id_mp", mp.Codigo);
                     cmd.Parameters.AddWithValue("@Ide", mp.Ide);
-                    cmd.Parameters.AddWithValue("@TotalFinal", mp.TotalFinal);
+                    cmd.Parameters.AddWithValue("@PrecoFinal", mp.PrecoFinal);
+                    cmd.Parameters.AddWithValue("@PrecoUnitario", mp.PrecoUnitario);
+                    cmd.Parameters.AddWithValue("@PrecoOriginal", mp.PrecoOriginal);
                     cmd.Parameters.AddWithValue("@Quantidade", mp.Quantidade);
                     cmd.Parameters.AddWithValue("@Desconto", mp.Desconto);
-                    cmd.Parameters.AddWithValue("@TotalOriginal", mp.PrecoUnitario);
                     cmd.Parameters.AddWithValue("@ProdutoId", mp.produto__id);
                     cmd.Parameters.AddWithValue("@FuncionarioId", mp.funcionario__id);
                     cmd.Parameters.AddWithValue("@MovimentoId", mp.produto__id  );
@@ -160,7 +161,7 @@ namespace DAL
                     {
                         mp.Codigo = (int)dr[0];
                         mp.ProdutoNome = dr[1].ToString();
-                        mp.TotalFinal = (decimal)dr[2];
+                        mp.PrecoFinal = (decimal)dr[2];
                         mp.FuncionarioNome = dr[3].ToString();
                         mp.DataLancamento = DateTime.Parse(dr[4].ToString());
 

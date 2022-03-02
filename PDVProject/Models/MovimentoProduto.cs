@@ -13,7 +13,7 @@ namespace Entity
         public decimal PrecoOriginal { get; set; }
         public decimal PrecoUnitario { get; set; }
         public decimal Desconto { get; set; }
-        public decimal TotalFinal { get; set; }
+        public decimal PrecoFinal { get; set; }
         #region Foreign Key
         public int movimento__id { get; set; }
         public int funcionario__id { get; set; }
@@ -49,7 +49,7 @@ namespace Entity
             Desconto = desconto> 0.00m ? Math.Round(precoUnitario * (desconto / 100),2): 0.00m ;
             PrecoUnitario = precoUnitario;
             PrecoOriginal = Math.Round(precoOriginal,2);
-            TotalFinal = (precoUnitario - Desconto) * quantidade;
+            PrecoFinal = (precoUnitario - Desconto) * quantidade;
             funcionario__id = funcionarioCodigo;
             FuncionarioNome = funcionarioNome;
             DataLancamento = datalancamento;

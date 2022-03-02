@@ -80,3 +80,6 @@ ALTER TABLE movimento_produto ALTER COLUMN Desconto Decimal(10,2) not null;
 ALTER TABLE Movimento_Produto add PrecoFinal Decimal(10,2);
 update Movimento_Produto set PrecoFinal = TotalFinal;
 ALTER TABLE movimento_produto ALTER COLUMN PrecoFinal Decimal(10,2) not null; 
+
+sp_RENAME 'Movimento_Produto.PrecoOriginal2' , 'PrecoOriginal', 'COLUMN'
+sp_RENAME 'Movimento_Produto.Preco' , 'PrecoUnitario', 'COLUMN'

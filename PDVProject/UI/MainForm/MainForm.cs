@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PDVProject.UI
 {
-    public partial class MainForm : Form
+    public partial class MainForm2 : Form
     {
-        public MainForm()
+        public MainForm2()
         {
             InitializeComponent();
         }
