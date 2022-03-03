@@ -31,7 +31,6 @@ namespace PDVProject.UI
         {
             this.btnNovoCliente = new System.Windows.Forms.Button();
             this.btnNovoProduto = new System.Windows.Forms.Button();
-            this.lb_caixa = new System.Windows.Forms.Label();
             this.btn_func = new System.Windows.Forms.Button();
             this.btn_vendas = new System.Windows.Forms.Button();
             this.btn_pg = new System.Windows.Forms.Button();
@@ -62,16 +61,6 @@ namespace PDVProject.UI
             this.btnNovoProduto.Text = "Produtos";
             this.btnNovoProduto.UseVisualStyleBackColor = true;
             this.btnNovoProduto.Click += new System.EventHandler(this.btnNovoProduto_Click);
-            // 
-            // lb_caixa
-            // 
-            this.lb_caixa.Font = new System.Drawing.Font("Segoe UI", 54F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lb_caixa.Location = new System.Drawing.Point(327, 94);
-            this.lb_caixa.Name = "lb_caixa";
-            this.lb_caixa.Size = new System.Drawing.Size(575, 96);
-            this.lb_caixa.TabIndex = 3;
-            this.lb_caixa.Text = "CAIXA FECHADO";
-            this.lb_caixa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btn_func
             // 
@@ -146,7 +135,7 @@ namespace PDVProject.UI
             this.btn_finalizar.UseVisualStyleBackColor = true;
             this.btn_finalizar.Click += new System.EventHandler(this.btn_finalizar_Click);
             // 
-            // MainForm
+            // MainForm2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -159,10 +148,9 @@ namespace PDVProject.UI
             this.Controls.Add(this.btn_pg);
             this.Controls.Add(this.btn_vendas);
             this.Controls.Add(this.btn_func);
-            this.Controls.Add(this.lb_caixa);
             this.Controls.Add(this.btnNovoProduto);
             this.Controls.Add(this.btnNovoCliente);
-            this.Name = "MainForm";
+            this.Name = "MainForm2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PDVProject";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -174,7 +162,6 @@ namespace PDVProject.UI
 
         private System.Windows.Forms.Button btnNovoCliente;
         private System.Windows.Forms.Button btnNovoProduto;
-        private System.Windows.Forms.Label lb_caixa;
         private System.Windows.Forms.Button btn_func;
         private System.Windows.Forms.Button btn_vendas;
         private System.Windows.Forms.Button btn_pg;

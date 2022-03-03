@@ -49,7 +49,6 @@ namespace PDVProject.UI
 
         private void btn_finalizar_Click(object sender, EventArgs e)
         {
-            lb_caixa.Text = "CAIXA FECHADO";
             btnVenda.Text = "Iniciar Caixa";
             btn_finalizar.Text = "Finalizar";
         }

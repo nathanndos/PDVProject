@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
 using Entity;
+using PDVProject.UI.MainForm.MovForm;
 
 
 namespace PDVProject.UI
@@ -189,7 +190,8 @@ namespace PDVProject.UI
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            
+            ExcluirProdutoForm excluirForm = new ExcluirProdutoForm();
+            excluirForm.Show();
         }
     }
 }
