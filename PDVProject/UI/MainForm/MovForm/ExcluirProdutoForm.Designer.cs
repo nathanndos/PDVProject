@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.txtLinha = new System.Windows.Forms.TextBox();
+            this.remover = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -43,21 +43,22 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Informe qual linha deseja remover?";
             // 
-            // textBox1
+            // txtLinha
             // 
-            this.textBox1.Location = new System.Drawing.Point(28, 44);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 1;
+            this.txtLinha.Location = new System.Drawing.Point(28, 44);
+            this.txtLinha.Name = "txtLinha";
+            this.txtLinha.Size = new System.Drawing.Size(100, 23);
+            this.txtLinha.TabIndex = 1;
             // 
-            // button1
+            // remover
             // 
-            this.button1.Location = new System.Drawing.Point(26, 83);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Remover";
-            this.button1.UseVisualStyleBackColor = true;
+            this.remover.Location = new System.Drawing.Point(26, 83);
+            this.remover.Name = "remover";
+            this.remover.Size = new System.Drawing.Size(75, 23);
+            this.remover.TabIndex = 2;
+            this.remover.Text = "Remover";
+            this.remover.UseVisualStyleBackColor = true;
+            this.remover.Click += new System.EventHandler(this.remover_Click);
             // 
             // button2
             // 
@@ -75,10 +76,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(287, 131);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.remover);
+            this.Controls.Add(this.txtLinha);
             this.Controls.Add(this.label1);
             this.Name = "ExcluirProdutoForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ExcluirProdutoForm";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -88,8 +90,8 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtLinha;
+        private System.Windows.Forms.Button remover;
         private System.Windows.Forms.Button button2;
     }
 }

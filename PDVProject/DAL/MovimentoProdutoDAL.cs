@@ -20,8 +20,8 @@ namespace DAL
             {
                 try
                 {
-                    const string sqlQuery = "INSERT INTO Movimento_Produto(ID, Ide, PrecoOriginal,PrecoFinal,PrecoUnitario,Quantidade, Desconto,Funcionario__Id, Produto__id, movimento__id,DataLancamento, Status)" +
-                                            "VALUES(@Id_mp, @Ide, @PrecoOriginal,@PrecoFinal,@PrecoUnitario,@Quantidade, @Desconto, @FuncionarioId,@ProdutoId, @MovimentoId,@DataLancamento,  @status)";
+                    const string sqlQuery = "INSERT INTO Movimento_Produto(Linha,ID, Ide, PrecoOriginal,PrecoFinal,PrecoUnitario,Quantidade, Desconto,Funcionario__Id, Produto__id, movimento__id,DataLancamento, Status)" +
+                                            "VALUES(@Linha,@Id_mp, @Ide, @PrecoOriginal,@PrecoFinal,@PrecoUnitario,@Quantidade, @Desconto, @FuncionarioId,@ProdutoId, @MovimentoId,@DataLancamento,  @status)";
 
                     SqlCommand cmd = new SqlCommand(sqlQuery, conec);//passa a query e passa a instancia da conexao 
                     cmd.Parameters.AddWithValue("@Id_mp", mp.Codigo);
@@ -36,6 +36,7 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@MovimentoId", mp.produto__id  );
                     cmd.Parameters.AddWithValue("@DataLancamento", mp.DataLancamento);
                     cmd.Parameters.AddWithValue("@status", mp.Status);
+                    cmd.Parameters.AddWithValue("@Linha", mp.Linha);
 
                     conec.Open();//abre a conexao
                     cmd.ExecuteNonQuery();//Executa uma instrução do blocoSQL

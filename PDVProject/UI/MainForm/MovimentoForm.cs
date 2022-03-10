@@ -82,10 +82,11 @@ namespace PDVProject.UI
         private void button1_Click_1(object sender, EventArgs e)
         {
             try
-            {
-                dgProdutosVenda.DataSource = null;
+            {              
+
                 produto = ProdutoBLL.getData(int.Parse(txtCodProduto.Text));
-                movimentoProdutos.Add(new MovimentoProduto(produto.Codigo,
+                movimentoProdutos.Add(new MovimentoProduto(movimentoProdutos.Count+1,
+                    produto.Codigo,
                     produto.Nome,
                     produto.Ide,
                     int.Parse(txtQtd.Text),
@@ -126,11 +127,13 @@ namespace PDVProject.UI
         // -------------
         public void configGrid()
         {
+            dgProdutosVenda.DataSource = null;
             dgProdutosVenda.DataSource = movimentoProdutos;
-            dgProdutosVenda.Columns["Produto__id"].DisplayIndex = 0;
-            dgProdutosVenda.Columns["ProdutoNome"].DisplayIndex = 1;
-            dgProdutosVenda.Columns["Quantidade"].DisplayIndex = 2;
-            dgProdutosVenda.Columns["PrecoUnitario"].DisplayIndex = 3;
+            dgProdutosVenda.Columns["Linha"].DisplayIndex = 0;
+            dgProdutosVenda.Columns["Produto__id"].DisplayIndex = 1;
+            dgProdutosVenda.Columns["ProdutoNome"].DisplayIndex = 2;
+            dgProdutosVenda.Columns["Quantidade"].DisplayIndex = 3;
+            dgProdutosVenda.Columns["PrecoUnitario"].DisplayIndex = 4;
         }
         public void setTotalFinal()
         {
@@ -146,7 +149,6 @@ namespace PDVProject.UI
             txtTotal.Text = "";
             txtDesconto.Text = "0,0";
             lbFeedBack.Text = "";
-
         }
         private void GravarMovimento(object sender, EventArgs e)
         {

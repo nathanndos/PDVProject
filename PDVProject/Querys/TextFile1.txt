@@ -83,3 +83,7 @@ ALTER TABLE movimento_produto ALTER COLUMN PrecoFinal Decimal(10,2) not null;
 
 sp_RENAME 'Movimento_Produto.PrecoOriginal2' , 'PrecoOriginal', 'COLUMN'
 sp_RENAME 'Movimento_Produto.Preco' , 'PrecoUnitario', 'COLUMN'
+
+ALTER TABLE Movimento_Produto add Linha int;
+update Movimento_Produto set Linha = 1;
+ALTER TABLE movimento_produto ALTER COLUMN Linha int not null; 

@@ -9,6 +9,7 @@ namespace Entity
     public class MovimentoProduto:ClasseBase
     {
         public static int Id {get; set; }
+        public int Linha { get; set; }  
         public int Quantidade { get; set; }
         public decimal PrecoOriginal { get; set; }
         public decimal PrecoUnitario { get; set; }
@@ -30,7 +31,8 @@ namespace Entity
         }
         public MovimentoProduto(int codigo) => Codigo = codigo;
 
-        public MovimentoProduto(int produtoCodigo,
+        public MovimentoProduto(int linha,
+            int produtoCodigo,
             string produtoNome,
             string produto__ide,
             int quantidade, 
@@ -42,6 +44,7 @@ namespace Entity
             DateTime datalancamento)
         {
             createEntity();
+            Linha = linha;  
             produto__id = produtoCodigo;
             ProdutoNome = produtoNome;
             Produto__ide = produto__ide;
