@@ -151,12 +151,11 @@ namespace PDVProject.UI
         {
             if(txtSequencia.Text != "")
             {
-                MovimentoBLL.getLast();
+                MovimentoBLL.getData(int.Parse(txtSequencia.Text));
             }
             else
             {
                 MovimentoProdutoBLL.getLast();
-
                 MovimentoBLL.getLast();
                 movimento = new Movimento(convertDecimal(txtTotalMov),
                     convertDecimal(txtDesconto),
@@ -202,10 +201,27 @@ namespace PDVProject.UI
             }
             configGrid();
         }
+
+        private void btnFinanceiro_Click(object sender, EventArgs e)
+        {
+            FinanceiroForm financeiroForm = new FinanceiroForm(Decimal.Parse(txtTotalMov.Text),this);
+            financeiroForm.Show();
+        }
+
+        private void txtSequencia_DoubleClick(object sender, EventArgs e)
+        {
+            BuscarSequencia buscarSequencia = new BuscarSequencia(this);
+            buscarSequencia.Show();
+         }
+
+        private void txtSequencia_TextChanged(object sender, EventArgs e)
+        {
+
+        }
         //----////----
 
-     
-    
+
+
     }
 }
         

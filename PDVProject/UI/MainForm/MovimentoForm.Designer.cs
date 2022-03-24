@@ -61,6 +61,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtTotalMov = new System.Windows.Forms.TextBox();
             this.lbFeedBack = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProdutosVenda)).BeginInit();
             this.SuspendLayout();
@@ -77,7 +80,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(378, 124);
+            this.label2.Location = new System.Drawing.Point(376, 124);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 15);
             this.label2.TabIndex = 6;
@@ -120,7 +123,7 @@
             // 
             // txtCliente
             // 
-            this.txtCliente.Location = new System.Drawing.Point(428, 121);
+            this.txtCliente.Location = new System.Drawing.Point(427, 121);
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.Size = new System.Drawing.Size(54, 23);
             this.txtCliente.TabIndex = 11;
@@ -146,9 +149,9 @@
             // disableCliente
             // 
             this.disableCliente.Enabled = false;
-            this.disableCliente.Location = new System.Drawing.Point(488, 121);
+            this.disableCliente.Location = new System.Drawing.Point(516, 120);
             this.disableCliente.Name = "disableCliente";
-            this.disableCliente.Size = new System.Drawing.Size(252, 23);
+            this.disableCliente.Size = new System.Drawing.Size(225, 23);
             this.disableCliente.TabIndex = 1;
             // 
             // disableVendedor
@@ -301,7 +304,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(771, 124);
+            this.label6.Location = new System.Drawing.Point(783, 124);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(61, 15);
             this.label6.TabIndex = 20;
@@ -309,11 +312,15 @@
             // 
             // txtSequencia
             // 
-            this.txtSequencia.Enabled = false;
-            this.txtSequencia.Location = new System.Drawing.Point(850, 121);
+            this.txtSequencia.CausesValidation = false;
+            this.txtSequencia.Location = new System.Drawing.Point(850, 120);
             this.txtSequencia.Name = "txtSequencia";
+            this.txtSequencia.ReadOnly = true;
             this.txtSequencia.Size = new System.Drawing.Size(80, 23);
             this.txtSequencia.TabIndex = 21;
+            this.txtSequencia.TabStop = false;
+            this.txtSequencia.TextChanged += new System.EventHandler(this.txtSequencia_TextChanged);
+            this.txtSequencia.DoubleClick += new System.EventHandler(this.txtSequencia_DoubleClick);
             // 
             // btnDesconto
             // 
@@ -334,6 +341,7 @@
             this.btnFinanceiro.TabStop = false;
             this.btnFinanceiro.Text = "Financeiro ";
             this.btnFinanceiro.UseVisualStyleBackColor = true;
+            this.btnFinanceiro.Click += new System.EventHandler(this.btnFinanceiro_Click);
             // 
             // btnGravar
             // 
@@ -386,11 +394,41 @@
             this.lbFeedBack.TabIndex = 28;
             this.lbFeedBack.Text = "lbRodaPe";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(347, 29);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 35);
+            this.button2.TabIndex = 29;
+            this.button2.Text = "Cliente";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(347, 65);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 35);
+            this.button3.TabIndex = 30;
+            this.button3.Text = "Produto";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(487, 120);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(23, 24);
+            this.button4.TabIndex = 31;
+            this.button4.Text = "+";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
             // MovimentoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 661);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.lbFeedBack);
             this.Controls.Add(this.txtTotalMov);
             this.Controls.Add(this.label9);
@@ -456,5 +494,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtDesconto;
         private System.Windows.Forms.Label lbFeedBack;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }
