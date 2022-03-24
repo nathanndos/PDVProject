@@ -87,3 +87,25 @@ sp_RENAME 'Movimento_Produto.Preco' , 'PrecoUnitario', 'COLUMN'
 ALTER TABLE Movimento_Produto add Linha int;
 update Movimento_Produto set Linha = 1;
 ALTER TABLE movimento_produto ALTER COLUMN Linha int not null; 
+
+
+CREATE TABLE FormaPagamento(
+	Id INT PRIMARY KEY,
+	Ide VARCHAR(23) NOT NULL,
+	DataCriacao SMALLDATETIME NOT NULL,	
+	DataAlteracao SMALLDATETIME NOT NULL,	
+	Tipo INT NOT NULL
+)
+
+
+CREATE TABLE Movimento_Financeiro(
+	Id INT PRIMARY KEY,
+	Ide VARCHAR(23) NOT NULL,
+	TotalFinal DECIMAL(10,2) NOT NULL,
+	DataLancamento SMALLDATETIME NOT NULL,	
+	--Foreign Key
+	Movimento__Id INT NOT NULL,
+	Funcionario__Id INT NOT NULL,
+	CONSTRAINT fk_Movimento__Id FOREIGN KEY (Movimento__Id) REFERENCES Movimento(Id),
+	CONSTRAINT fk_Funcionario__Id FOREIGN KEY (Funcionario__ID) REFERENCES Funcionarios(Id)
+)
