@@ -16,7 +16,7 @@ namespace PDVProject.UI
 {
     public partial class MovimentoForm : Form
     {
-        List<MovimentoProduto> movimentoProdutos = new List<MovimentoProduto>();
+        public List<MovimentoProduto> movimentoProdutos = new List<MovimentoProduto>();
         Produto produto = null;
         Cliente cliente = null;
         Funcionario funcionario = null;
@@ -82,8 +82,7 @@ namespace PDVProject.UI
         private void button1_Click_1(object sender, EventArgs e)
         {
             try
-            {              
-
+            {             
                 produto = ProdutoBLL.getData(int.Parse(txtCodProduto.Text));
                 movimentoProdutos.Add(new MovimentoProduto(movimentoProdutos.Count+1,
                     produto.Codigo,
@@ -106,8 +105,6 @@ namespace PDVProject.UI
             {
                 MessageBox.Show(ex.Message);
             }
-
-
         }
         private void txtTotal_KeyDown(object sender, KeyEventArgs e)
         {
@@ -192,9 +189,23 @@ namespace PDVProject.UI
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            ExcluirProdutoForm excluirForm = new ExcluirProdutoForm();
-            excluirForm.Show();
+
+            if (Application.OpenForms.OfType<ExcluirProdutoForm>().Count() > 0)
+            {
+                MessageBox.Show("O Form2 já está aberto!");
+            }
+            else
+            {
+                ExcluirProdutoForm excluirForm = new ExcluirProdutoForm(this);
+                excluirForm.Show();
+               
+            }
+            configGrid();
         }
+        //----////----
+
+     
+    
     }
 }
         

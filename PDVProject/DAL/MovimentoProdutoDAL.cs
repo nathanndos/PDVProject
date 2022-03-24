@@ -33,7 +33,7 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@Desconto", mp.Desconto);
                     cmd.Parameters.AddWithValue("@ProdutoId", mp.produto__id);
                     cmd.Parameters.AddWithValue("@FuncionarioId", mp.funcionario__id);
-                    cmd.Parameters.AddWithValue("@MovimentoId", mp.produto__id  );
+                    cmd.Parameters.AddWithValue("@MovimentoId", mp.movimento__id);
                     cmd.Parameters.AddWithValue("@DataLancamento", mp.DataLancamento);
                     cmd.Parameters.AddWithValue("@status", mp.Status);
                     cmd.Parameters.AddWithValue("@Linha", mp.Linha);
