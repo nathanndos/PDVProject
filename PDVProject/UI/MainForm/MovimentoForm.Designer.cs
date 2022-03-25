@@ -363,6 +363,7 @@
             this.btnNovo.TabStop = false;
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // label9
             // 

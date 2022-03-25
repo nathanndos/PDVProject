@@ -146,6 +146,7 @@ namespace PDVProject.UI
             txtTotal.Text = "";
             txtDesconto.Text = "0,0";
             lbFeedBack.Text = "";
+            disableProduto.Text = "";
         }
         private void GravarMovimento(object sender, EventArgs e)
         {
@@ -218,10 +219,25 @@ namespace PDVProject.UI
         {
 
         }
+
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            clearFields();
+            txtCliente.Text = "";
+            txtVendedor.Text = "";
+            disableCliente.Text = "";
+            disableVendedor.Text = "";
+            txtTotalMov.Text = "";
+
+            movimentoProdutos = new List<MovimentoProduto>();
+            produto = null;
+            cliente = null;
+            funcionario = null;
+            movimento = null;
+
+            configGrid();
+    }
         //----////----
-
-
-
     }
 }
         
